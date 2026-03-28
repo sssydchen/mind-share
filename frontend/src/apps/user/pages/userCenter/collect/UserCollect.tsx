@@ -48,7 +48,7 @@ const UserCollect: React.FC = () => {
         />
       ) : (
         <div>
-          <div className="mb-4 text-lg font-medium">我的收藏夹</div>
+          <div className="mb-4 text-lg font-medium">My Collections</div>
           <CollectionList2
             collectionVOList={collectionVOList}
             toggleShowCollectionDetail={toggleShowCollectionDetail}

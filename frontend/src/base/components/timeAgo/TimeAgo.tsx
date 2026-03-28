@@ -18,18 +18,18 @@ const TimeAgo: React.FC<TimeAgoProps> = ({ datetime }) => {
     const months = Math.floor(days / 30)
     const years = Math.floor(months / 12)
 
-    if (seconds < 60) return '刚刚'
-    if (minutes < 60) return `${minutes} 分钟前`
-    if (hours < 24) return `${hours} 小时前`
-    if (days < 30) return `${days} 天前`
-    if (months < 12) return `${months} 个月前`
-    return `${years} 年前`
+    if (seconds < 60) return 'just now'
+    if (minutes < 60) return `${minutes} minutes ago`
+    if (hours < 24) return `${hours} hours ago`
+    if (days < 30) return `${days} days ago`
+    if (months < 12) return `${months} months ago`
+    return `${years} years ago`
   }
 
   useEffect(() => {
     const date = new Date(datetime || '')
     if (isNaN(date.getTime())) {
-      setTimeAgo('无效日期')
+      setTimeAgo('Invalid date')
       return
     }
     // 更新初始显示

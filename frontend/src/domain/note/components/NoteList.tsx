@@ -114,7 +114,7 @@ const NoteList: React.FC<NoteListProps> = ({
           <Pagination total={pagination?.total} onChange={handlePageChange} />
         </div>
       )}
-      {noteList.length === 0 && <Empty description={'暂无笔记'} />}
+      {noteList.length === 0 && <Empty description={'No notes yet'} />}
       <CollectionModal
         isModalOpen={isModalOpen}
         collectNote={collectNote}

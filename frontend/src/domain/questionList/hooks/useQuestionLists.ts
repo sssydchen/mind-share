@@ -7,7 +7,7 @@ import { adminQuestionListService } from '../service/questionListService.ts'
 
 export function useQuestionLists() {
   /**
-   * 题单列表
+   * Study Lists列表
    */
   const [questionLists, setQuestionLists] = useState<QuestionListEntity[]>()
   const [loading, setLoading] = useState(false)
@@ -24,7 +24,7 @@ export function useQuestionLists() {
   }, [])
 
   /**
-   * 删除题单处理函数
+   * 删除Study Lists处理函数
    */
   async function deleteQuestionListHandle(questionListId: number) {
     await adminQuestionListService.deleteQuestionListService(questionListId)
@@ -34,7 +34,7 @@ export function useQuestionLists() {
   }
 
   /**
-   * 创建题单处理函数
+   * 创建Study Lists处理函数
    */
   async function createQuestionListHandle(
     params: CreateOrUpDateQuestionListBody,
@@ -55,7 +55,7 @@ export function useQuestionLists() {
   }
 
   /**
-   * 更新题单处理函数
+   * 更新Study Lists处理函数
    */
   async function updateQuestionListHandle(
     questionListId: number,

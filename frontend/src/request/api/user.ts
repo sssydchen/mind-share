@@ -2,14 +2,14 @@ import { http } from '../http'
 import { LoginParams, RegisterParams, UserResponse } from '@/domain/user/types'
 
 /**
- * 用户登录
+ * 用户Login
  */
 export function login(params: LoginParams) {
   return http.post<UserResponse>('/api/auth/login', params)
 }
 
 /**
- * 用户注册
+ * 用户Sign Up
  */
 export function register(params: RegisterParams) {
   return http.post<UserResponse>('/api/auth/register', params)

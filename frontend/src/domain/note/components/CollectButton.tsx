@@ -21,14 +21,14 @@ const CollectButton: React.FC<CollectButtonProps> = ({
         <div className="flex cursor-pointer select-none items-center">
           <BsStarFill className="text-blue-500 hover:text-blue-600" />
           <span className="ml-1 text-sm text-blue-500 hover:text-blue-600">
-            {collectCount} 次收藏
+            {collectCount} saves
           </span>
         </div>
       ) : (
         <div className="flex cursor-pointer select-none items-center">
           <BsStarFill className="text-gray-500 hover:text-gray-600" />
           <span className="ml-1 text-sm text-gray-500 hover:text-gray-600">
-            {collectCount} 次收藏
+            {collectCount} saves
           </span>
         </div>
       )}

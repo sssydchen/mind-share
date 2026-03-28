@@ -20,8 +20,8 @@ export interface Message {
     avatar: string
   }
   type: MessageType
-  // 如果是评论 / 点赞消息的话，通过 target 能够导航到对应的界面
-  // 如果是系统消息，target 为空
+  // 如果是评论 / Like Notifications的话，通过 target 能够导航到对应的界面
+  // 如果是System Notifications，target 为空
   target?: {
     type: TargetType
     targetId: number
@@ -30,4 +30,15 @@ export interface Message {
   isRead: boolean
   content: string
   createdAt: string
+}
+
+export interface MessageQueryParams {
+  type?: MessageType
+  isRead?: boolean
+  startTime?: string
+  endTime?: string
+  sortField?: string
+  sortOrder?: 'asc' | 'desc'
+  page?: number
+  pageSize?: number
 }

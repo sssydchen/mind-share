@@ -96,7 +96,7 @@ const QuestionTable: React.FC<QuestionTableProps> = ({ categoryId }) => {
 
   const columns: TableProps<QuestionWithUserStatus>['columns'] = [
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'userQuestionStatus',
       render: (userQuestionStatus) => {
         return userQuestionStatus.finished ? (
@@ -108,13 +108,13 @@ const QuestionTable: React.FC<QuestionTableProps> = ({ categoryId }) => {
       width: '10%',
     },
     {
-      title: '问题 ID',
+      title: 'Question ID',
       dataIndex: 'questionId',
       key: 'questionId',
       width: '15%',
     },
     {
-      title: '标题',
+      title: 'Title',
       dataIndex: 'title',
       key: 'title',
       width: '35%',
@@ -127,9 +127,9 @@ const QuestionTable: React.FC<QuestionTableProps> = ({ categoryId }) => {
         </Link>
       ),
     },
-    { title: '考点', dataIndex: 'examPoint', key: 'examPoint', width: '20%' },
+    { title: 'Topic', dataIndex: 'examPoint', key: 'examPoint', width: '20%' },
     {
-      title: '难度',
+      title: 'Difficulty',
       dataIndex: 'difficulty',
       key: 'difficulty',
       sorter: true,
@@ -139,7 +139,7 @@ const QuestionTable: React.FC<QuestionTableProps> = ({ categoryId }) => {
       },
     },
     {
-      title: '浏览量',
+      title: 'Views',
       dataIndex: 'viewCount',
       key: 'viewCount',
       sorter: true,

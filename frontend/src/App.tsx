@@ -11,7 +11,7 @@ import './base/styles/github-markdown-light.css'
 
 function App() {
   /**
-   * 自动登录功能
+   * 自动Login功能
    */
   const { whoAmIHandle } = useLogin()
 

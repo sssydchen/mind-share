@@ -155,34 +155,34 @@ const QuestionList: React.FC = () => {
    */
   const columns: TableProps<QuestionEntity>['columns'] = [
     {
-      title: '问题 ID',
+      title: 'Question ID',
       dataIndex: 'questionId',
       key: 'questionId',
       width: '10%',
     },
-    { title: '标题', dataIndex: 'title', key: 'title', width: '40%' },
-    { title: '考点', dataIndex: 'examPoint', key: 'examPoint', width: '15%' },
+    { title: 'Title', dataIndex: 'title', key: 'title', width: '40%' },
+    { title: 'Topic', dataIndex: 'examPoint', key: 'examPoint', width: '15%' },
     {
-      title: '难度',
+      title: 'Difficulty',
       dataIndex: 'difficulty',
       key: 'difficulty',
       sorter: true,
       width: '10%',
     },
     {
-      title: '浏览量',
+      title: 'Views',
       dataIndex: 'viewCount',
       key: 'viewCount',
       sorter: true,
       width: '10%',
     },
     {
-      title: '操作',
+      title: 'Actions',
       width: '15%',
       render: (_, question) => {
         return (
           <div className="flex items-center gap-3">
-            <Tooltip title={'编辑'}>
+            <Tooltip title={'Edit'}>
               <EditTwo
                 theme="multi-color"
                 size="18"
@@ -196,12 +196,12 @@ const QuestionList: React.FC = () => {
               />
             </Tooltip>
             <Popconfirm
-              title={'确认删除？'}
+              title={'Delete this question?'}
               onConfirm={async () => {
                 await deleteQuestion(question.questionId)
               }}
             >
-              <Tooltip title={'删除'}>
+              <Tooltip title={'Delete'}>
                 <DeleteOne
                   theme="multi-color"
                   size="18"
@@ -223,7 +223,7 @@ const QuestionList: React.FC = () => {
       <div className="mb-3 flex justify-between">
         <div className="flex gap-2">
           <TreeSelect
-            prefix={<span>选择分类：</span>}
+            prefix={<span>Category:</span>}
             style={{
               width: 300,
             }}
@@ -232,11 +232,11 @@ const QuestionList: React.FC = () => {
             onChange={handleTreeSelectChange}
           ></TreeSelect>
           {/* TODO: 重置 TODO*/}
-          <Button type="primary">重置</Button>
+          <Button type="primary">Reset</Button>
         </div>
         <div className="flex gap-2">
           <Button icon={<AddThree />} onClick={() => setIsModalOpen(true)}>
-            批量创建
+            Bulk Create
           </Button>
           <Button
             type="primary"
@@ -247,7 +247,7 @@ const QuestionList: React.FC = () => {
               setSelectedQuestion(undefined)
             }}
           >
-            创建问题
+            Create Question
           </Button>
         </div>
       </div>
@@ -285,7 +285,7 @@ const QuestionList: React.FC = () => {
       <Modal
         open={isModalOpen}
         onCancel={() => setIsModalOpen(false)}
-        title={'批量创建问题'}
+        title={'Bulk Create Questions'}
         width={1000}
         okButtonProps={{
           loading: loadingBatch,
@@ -294,7 +294,9 @@ const QuestionList: React.FC = () => {
           setLoadingBatch(true)
           await createQuestionBatch(textAreaValue)
           setIsModalOpen(false)
-          message.success('批量创建问题完成，刷新后可见')
+          message.success(
+            'Bulk question creation completed. Refresh to see the new questions.',
+          )
         }}
       >
         <TextArea

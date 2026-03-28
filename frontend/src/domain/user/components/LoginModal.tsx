@@ -32,21 +32,21 @@ const LoginModal: React.FC = () => {
 
   const [form] = useForm()
 
-  // 发送验证码
+  // Send Code
   const handleSendVerifyCode = async () => {
     try {
       await form.validateFields(['email'])
       const email = form.getFieldValue('email')
       if (!email) {
-        message.error('请输入邮箱')
+        message.error('Enter your email')
         return false
       }
       setLoading(true)
       await userService.sendVerifyCode({ email, type: 'REGISTER' })
-      message.success('验证码已发送')
+      message.success('Verification code sent')
       return true
     } catch (e: any) {
-      message.error(e.message || '发送失败')
+      message.error(e.message || 'Failed to send')
       return false
     } finally {
       setLoading(false)
@@ -58,10 +58,10 @@ const LoginModal: React.FC = () => {
       setLoading(true)
       if (value === 'login') {
         await loginHandle(values)
-        message.success('登录成功')
+        message.success('Logged in successfully')
       } else if (value === 'register') {
         await registerHandle(values)
-        message.success('注册成功')
+        message.success('Registration successful')
       }
       setOpen(false)
     } catch (e: any) {
@@ -85,24 +85,24 @@ const LoginModal: React.FC = () => {
       >
         {value === 'login' && (
           <Form.Item
-            label="账号或邮箱"
+            label="Account or Email"
             name={form.getFieldValue('email') ? 'email' : 'account'}
             rules={[
-              { required: true, message: '请输入账号或邮箱' },
+              { required: true, message: 'Enter your account or email' },
               {
                 pattern: form.getFieldValue('email')
                   ? EMAIL_PATTERN
                   : ALPHANUMERIC_UNDERSCORE,
                 message: form.getFieldValue('email')
-                  ? '邮箱格式不正确'
-                  : '账号只能包含字母、数字和下划线',
+                  ? 'Invalid email format'
+                  : 'Account can only contain letters, numbers, and underscores',
               },
             ]}
           >
             <Input
               autoComplete="off"
               onChange={(e) => {
-                // 根据输入内容判断是邮箱还是账号
+                // Switch between email and account fields based on input.
                 const value = e.target.value
                 if (value.includes('@')) {
                   form.setFieldsValue({ email: value, account: undefined })
@@ -117,47 +117,49 @@ const LoginModal: React.FC = () => {
         {value === 'register' && (
           <>
             <Form.Item
-              label="账号"
+              label="Account"
               name="account"
               rules={[
-                { required: true, message: '请输入账号' },
+                { required: true, message: 'Enter your account' },
                 {
                   pattern: ALPHANUMERIC_UNDERSCORE,
-                  message: '账号只能包含字母、数字和下划线',
+                  message:
+                    'Account can only contain letters, numbers, and underscores',
                 },
                 {
                   min: 6,
                   max: 16,
-                  message: '账号长度在 6 - 16 个字符',
+                  message: 'Account length must be 6-16 characters',
                 },
               ]}
             >
               <Input autoComplete="off" />
             </Form.Item>
             <Form.Item
-              label="昵称"
+              label="Display Name"
               name="username"
               rules={[
-                { required: true, message: '请输入用户名' },
+                { required: true, message: 'Enter a display name' },
                 {
                   pattern: ALPHANUMERIC_UNDERSCORE_CHINESE,
-                  message: '昵称只能包含中文、字母、数字和下划线',
+                  message:
+                    'Display name can only contain letters, numbers, underscores, hyphens, dots, and Chinese characters',
                 },
                 {
                   min: 1,
                   max: 16,
-                  message: '昵称长度在 1 - 16 个字符之间',
+                  message: 'Display name must be 1-16 characters',
                 },
               ]}
             >
               <Input autoComplete={'off'} />
             </Form.Item>
             <Form.Item
-              label="邮箱"
+              label="Email"
               name="email"
               rules={[
-                { required: true, message: '请输入邮箱' },
-                { type: 'email', message: '邮箱格式不正确' },
+                { required: true, message: 'Enter your email' },
+                { type: 'email', message: 'Invalid email format' },
               ]}
             >
               <Input autoComplete="off" />
@@ -165,11 +167,11 @@ const LoginModal: React.FC = () => {
             <Row gutter={8} align="middle">
               <Col flex="auto">
                 <Form.Item
-                  label="验证码"
+                  label="Verification Code"
                   name="verifyCode"
                   rules={[
-                    { required: true, message: '请输入验证码' },
-                    { len: 6, message: '验证码长度必须为6位' },
+                    { required: true, message: 'Enter the verification code' },
+                    { len: 6, message: 'Verification code must be 6 digits' },
                   ]}
                 >
                   <Input autoComplete="off" />
@@ -183,25 +185,25 @@ const LoginModal: React.FC = () => {
         )}
 
         <Form.Item
-          label="密码"
+          label="Password"
           name="password"
           rules={[
-            { required: true, message: '请输入密码' },
+            { required: true, message: 'Enter your password' },
             {
               pattern: PASSWORD_ALLOWABLE_CHARACTERS,
-              message: '密码中包含不允许的字符',
+              message: 'Password contains unsupported characters',
             },
             {
               min: 8,
               max: 16,
-              message: '密码长度在 8 - 16 个字符之间',
+              message: 'Password length must be 8-16 characters',
             },
           ]}
         >
           <Input.Password autoComplete="new-password" />
         </Form.Item>
         <Button type="primary" htmlType="submit" block loading={loading}>
-          {value === 'register' ? '注册' : '登录'}
+          {value === 'register' ? 'Sign Up' : 'Login'}
         </Button>
       </Form>
     )
@@ -210,10 +212,10 @@ const LoginModal: React.FC = () => {
   return (
     <div className="cursor-pointer">
       <Avatar size={36} onClick={() => setOpen(true)}>
-        <span className="flex items-center text-xs">登录</span>
+        <span className="flex items-center text-xs">Login</span>
       </Avatar>
       <Modal
-        title={'注册登录'}
+        title={'Login / Sign Up'}
         open={open}
         onCancel={() => setOpen(false)}
         footer={null}
@@ -223,11 +225,11 @@ const LoginModal: React.FC = () => {
             block
             options={[
               {
-                label: '登录',
+                label: 'Login',
                 value: 'login',
               },
               {
-                label: '注册',
+                label: 'Sign Up',
                 value: 'register',
               },
             ]}

@@ -27,6 +27,9 @@ public class EmailServiceImpl implements EmailService {
     @Value("${mail.verify-code.limit-expire-seconds}")
     private int limitExpireSeconds;
 
+    @Value("${mail.verify-code.mock-enabled:false}")
+    private boolean mockEnabled;
+
     @Override
     public String sendVerificationCode(String email) {
         // 检查发送频率
@@ -36,6 +39,12 @@ public class EmailServiceImpl implements EmailService {
 
         // 生成6位随机验证码
         String verificationCode = RandomCodeUtil.generateNumberCode(6);
+
+        if (mockEnabled) {
+            cacheVerificationCode(email, verificationCode);
+            log.info("Mock verification code for {}: {}", email, verificationCode);
+            return verificationCode;
+        }
 
         // 实现异步发送邮件的逻辑
         try {
@@ -58,9 +67,7 @@ public class EmailServiceImpl implements EmailService {
             String queueKey = RedisKey.emailTaskQueue();
             redisTemplate.opsForList().leftPush(queueKey, emailTaskJson);
 
-            // 设置 email 发送注册验证码的限制
-            String emailLimitKey = RedisKey.registerVerificationLimitCode(email);
-            redisTemplate.opsForValue().set(emailLimitKey, "1", limitExpireSeconds, TimeUnit.SECONDS);
+            cacheRateLimit(email);
 
             return verificationCode;
         } catch (Exception e) {
@@ -85,5 +92,20 @@ public class EmailServiceImpl implements EmailService {
     public boolean isVerificationCodeRateLimited(String email) {
         String redisKey = RedisKey.registerVerificationLimitCode(email);
         return redisTemplate.opsForValue().get(redisKey) != null;
+    }
+
+    private void cacheVerificationCode(String email, String verificationCode) {
+        redisTemplate.opsForValue().set(
+            RedisKey.registerVerificationCode(email),
+            verificationCode,
+            5,
+            TimeUnit.MINUTES
+        );
+        cacheRateLimit(email);
+    }
+
+    private void cacheRateLimit(String email) {
+        String emailLimitKey = RedisKey.registerVerificationLimitCode(email);
+        redisTemplate.opsForValue().set(emailLimitKey, "1", limitExpireSeconds, TimeUnit.SECONDS);
     }
 }

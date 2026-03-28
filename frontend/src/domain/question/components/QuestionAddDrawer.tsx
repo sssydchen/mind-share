@@ -56,7 +56,7 @@ const QuestionAddDrawer: React.FC<QuestionAddDrawerProps> = ({
     setLoading(true)
     if (mode === 'create') {
       createQuestion(values as CreateQuestionBody)
-      message.success('创建成功')
+      message.success('Created successfully')
       toggleIsDrawerOpen()
     } else if (mode === 'update') {
       if (selectedQuestion === undefined) {
@@ -70,7 +70,7 @@ const QuestionAddDrawer: React.FC<QuestionAddDrawerProps> = ({
         ...diffResult,
         questionId: selectedQuestion.questionId,
       })
-      message.success('更新成功')
+      message.success('Updated successfully')
       toggleIsDrawerOpen()
     }
     setLoading(false)
@@ -79,7 +79,7 @@ const QuestionAddDrawer: React.FC<QuestionAddDrawerProps> = ({
   return (
     <Drawer
       open={isDrawerOpen}
-      title={mode === 'create' ? '创建问题' : '更新问题'}
+      title={mode === 'create' ? 'Create Question' : 'Update Question'}
       onClose={toggleIsDrawerOpen}
       width={450}
     >
@@ -90,41 +90,47 @@ const QuestionAddDrawer: React.FC<QuestionAddDrawerProps> = ({
         autoComplete="off"
       >
         {mode === 'update' && (
-          <Form.Item label={'问题ID'} name={'questionId'}>
+          <Form.Item label={'Question ID'} name={'questionId'}>
             <Input disabled></Input>
           </Form.Item>
         )}
         <Form.Item
-          label={'题目'}
+          label={'Title'}
           name={'title'}
           rules={[
-            { required: true, message: '请输入题目' },
+            { required: true, message: 'Enter a title' },
             {
               min: 2,
               max: 255,
-              message: '题目长度在 2 - 255 个字符',
+              message: 'Title must be between 2 and 255 characters',
             },
           ]}
         >
           <Input />
         </Form.Item>
-        <Form.Item label={'难度'} name={'difficulty'} required>
+        <Form.Item label={'Difficulty'} name={'difficulty'} required>
           <Select>
-            <Select.Option value={QuestionDifficulty.Easy}>简单</Select.Option>
+            <Select.Option value={QuestionDifficulty.Easy}>Easy</Select.Option>
             <Select.Option value={QuestionDifficulty.Medium}>
-              中等
+              Medium
             </Select.Option>
-            <Select.Option value={QuestionDifficulty.Hard}>困难</Select.Option>
+            <Select.Option value={QuestionDifficulty.Hard}>Hard</Select.Option>
           </Select>
         </Form.Item>
         <Form.Item
-          label={'考点'}
+          label={'Topic'}
           name={'examPoint'}
-          rules={[{ min: 2, max: 255, message: '考点长度在 2 - 255 个字符' }]}
+          rules={[
+            {
+              min: 2,
+              max: 255,
+              message: 'Topic must be between 2 and 255 characters',
+            },
+          ]}
         >
           <Input />
         </Form.Item>
-        <Form.Item label={'所属分类'} name={'categoryId'} required>
+        <Form.Item label={'Category'} name={'categoryId'} required>
           <TreeSelect
             style={{ width: '100%' }}
             treeData={treeData}
@@ -132,7 +138,7 @@ const QuestionAddDrawer: React.FC<QuestionAddDrawerProps> = ({
         </Form.Item>
         <Form.Item>
           <Button block htmlType="submit" type="primary" loading={loading}>
-            {mode === 'create' ? '创建题目' : '更新题目'}
+            {mode === 'create' ? 'Create Question' : 'Update Question'}
           </Button>
         </Form.Item>
       </Form>

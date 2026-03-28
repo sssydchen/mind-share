@@ -22,13 +22,13 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({
             window.location.href = '/'
           }}
         >
-          返回首页
+          Back Home
         </Button>,
-        <Button onClick={resetErrorBoundary}>重新尝试</Button>,
+        <Button onClick={resetErrorBoundary}>Try Again</Button>,
       ]}
     >
       <div className="mt-4 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-4">
-        <h3 className="text-sm font-medium text-gray-600">错误栈信息：</h3>
+        <h3 className="text-sm font-medium text-gray-600">Stack trace:</h3>
         <pre className="mt-2 whitespace-pre-wrap break-words text-sm text-gray-600">
           {error.stack}
         </pre>

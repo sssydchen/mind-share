@@ -18,7 +18,7 @@ export const messageService = {
   },
 
   /**
-   * 批量标记已读
+   * 批量Mark as Read
    */
   readMessages: (messageIds: number[]) => {
     return httpClient.request<null>(messageApi.readMessageBatch, {
@@ -36,7 +36,7 @@ export const messageService = {
   },
 
   /**
-   * 删除消息
+   * Delete Message
    */
   deleteMessage: (messageId: number) => {
     return httpClient.request<null>(messageApi.deleteMessage, {

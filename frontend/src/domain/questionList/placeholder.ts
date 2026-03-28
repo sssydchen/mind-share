@@ -1,14 +1,14 @@
-export const createQuestionBatchPlaceHolder = `# 机器学习基础
+export const createQuestionBatchPlaceHolder = `# Machine Learning Fundamentals
 
-##监督学习
+## Supervised Learning
 
-* 什么是过拟合？举例说明如何解决（考点：模型泛化能力）【中等】
-* 常见的回归与分类算法有哪些？各自适用场景是什么？（考点：算法分类与应用）【简单】
-* 如何选择合适的评价指标，比如在分类问题中？（考点：Precision/Recall/F1/AUC）【中等】
+* What is overfitting, and how can it be addressed? (Topic: model generalization) [Medium]
+* What are common regression and classification algorithms, and when should each be used? (Topic: algorithm selection) [Easy]
+* How do you choose the right evaluation metric for a classification problem? (Topic: Precision/Recall/F1/AUC) [Medium]
 
-## 无监督学习
+## Unsupervised Learning
 
-* K-means 聚类的基本原理是什么？其优缺点有哪些？（考点：聚类算法）【简单】
-* PCA 的数学原理是什么？它如何实现降维？（考点：线性代数在AI中的应用）【困难】
-* 异常检测通常采用哪些无监督方法？（考点：无监督学习应用）【中等】
+* What is the core idea behind K-means clustering, and what are its strengths and weaknesses? (Topic: clustering algorithms) [Easy]
+* What is the mathematical intuition behind PCA, and how does it reduce dimensionality? (Topic: linear algebra in AI) [Hard]
+* Which unsupervised methods are commonly used for anomaly detection? (Topic: unsupervised learning applications) [Medium]
 `

@@ -18,37 +18,37 @@ const UserList: React.FC = () => {
   // 表格列配置
   const columns = [
     {
-      title: '用户ID',
+      title: 'User ID',
       dataIndex: 'userId',
       key: 'userId',
     },
     {
-      title: '账号',
+      title: 'Account',
       dataIndex: 'account',
       key: 'account',
     },
     {
-      title: '用户名',
+      title: 'User Name',
       dataIndex: 'username',
       key: 'username',
     },
     {
-      title: '是否管理员',
+      title: 'Admin',
       dataIndex: 'isAdmin',
       key: 'isAdmin',
       render: (isAdmin: Admin) => (
         <Tag color={isAdmin === Admin.ADMIN ? 'green' : 'red'}>
-          {isAdmin === Admin.ADMIN ? '是' : '否'}
+          {isAdmin === Admin.ADMIN ? 'Yes' : 'No'}
         </Tag>
       ),
     },
     {
-      title: '是否封禁',
+      title: 'Banned',
       dataIndex: 'isBanned',
       key: 'isBanned',
       render: (isBanned: Banned) => (
         <Tag color={isBanned === Banned.BANNED ? 'red' : 'green'}>
-          {isBanned === Banned.BANNED ? '已封禁' : '正常'}
+          {isBanned === Banned.BANNED ? 'Banned' : 'Active'}
         </Tag>
       ),
     },
@@ -59,37 +59,37 @@ const UserList: React.FC = () => {
       {/* 筛选区域 */}
       <div className="mb-4 grid grid-cols-2 gap-4 md:grid-cols-4">
         <Input
-          placeholder="用户ID"
+          placeholder="User ID"
           value={filters.userId}
           onChange={(e) => setFilters({ ...filters, userId: e.target.value })}
         />
         <Input
-          placeholder="账号"
+          placeholder="Account"
           value={filters.account}
           onChange={(e) => setFilters({ ...filters, account: e.target.value })}
         />
         <Input
-          placeholder="用户名"
+          placeholder="User Name"
           value={filters.username}
           onChange={(e) => setFilters({ ...filters, username: e.target.value })}
         />
         <Select
-          placeholder="是否管理员"
+          placeholder="Admin status"
           allowClear
           onChange={(value) => setFilters({ ...filters, isAdmin: value })}
           className="w-full"
         >
-          <Select.Option value={Admin.ADMIN}>是</Select.Option>
-          <Select.Option value={Admin.NOT_ADMIN}>否</Select.Option>
+          <Select.Option value={Admin.ADMIN}>Yes</Select.Option>
+          <Select.Option value={Admin.NOT_ADMIN}>No</Select.Option>
         </Select>
         <Select
-          placeholder="是否封禁"
+          placeholder="Ban status"
           allowClear
           onChange={(value) => setFilters({ ...filters, isBanned: value })}
           className="w-full"
         >
-          <Select.Option value={Banned.UNBANNED}>正常</Select.Option>
-          <Select.Option value={Banned.BANNED}>已封禁</Select.Option>
+          <Select.Option value={Banned.UNBANNED}>Active</Select.Option>
+          <Select.Option value={Banned.BANNED}>Banned</Select.Option>
         </Select>
       </div>
       <div className="mb-4">
@@ -99,7 +99,7 @@ const UserList: React.FC = () => {
             setPage(1) // 重置分页
           }}
         >
-          筛选
+          Filter
         </Button>
         <Button
           onClick={() => {
@@ -111,7 +111,7 @@ const UserList: React.FC = () => {
           }}
           className="ml-2"
         >
-          重置
+          Reset
         </Button>
       </div>
 

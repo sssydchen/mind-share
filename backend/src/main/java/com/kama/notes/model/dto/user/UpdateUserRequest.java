@@ -2,7 +2,7 @@ package com.kama.notes.model.dto.user;
 
 import lombok.Data;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 
 /**

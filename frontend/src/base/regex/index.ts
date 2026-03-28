@@ -9,7 +9,7 @@ export const ALPHANUMERIC_UNDERSCORE = /^[a-zA-Z0-9_]+$/
 export const ALPHANUMERIC_UNDERSCORE_CHINESE = /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/
 
 /**
- * 密码
+ * Password
  */
 export const PASSWORD_ALLOWABLE_CHARACTERS =
   /^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?`~]+$/

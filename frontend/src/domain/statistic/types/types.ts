@@ -1,5 +1,5 @@
 /**
- * 统计信息接口，包含登录、注册、笔记等统计数据
+ * 统计信息接口，包含Login、Sign Up、笔记等统计数据
  */
 export interface StatisticEntity {
   /**
@@ -8,17 +8,17 @@ export interface StatisticEntity {
   id: number
 
   /**
-   * 当天登录次数
+   * 当天Login次数
    */
   loginCount: number
 
   /**
-   * 当天注册人数
+   * 当天Sign Up人数
    */
   registerCount: number
 
   /**
-   * 累计注册总人数
+   * 累计Sign Up总人数
    */
   totalRegisterCount: number
 

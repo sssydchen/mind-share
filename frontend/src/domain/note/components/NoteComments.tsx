@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Avatar, Button, Input, List, message } from 'antd'
 import {
   createComment,
@@ -8,7 +8,7 @@ import {
 import { NoteComment } from '@/domain/note/types'
 import { useUser } from '@/domain/user/hooks/useUser'
 import { formatDistanceToNow } from 'date-fns'
-import { zhCN } from 'date-fns/locale'
+import { enUS } from 'date-fns/locale'
 
 interface NoteCommentsProps {
   noteId: number
@@ -18,38 +18,38 @@ export function NoteComments({ noteId }: NoteCommentsProps) {
   const [comments, setComments] = useState<NoteComment[]>([])
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(false)
-  const { currentUser } = useUser()
+  const currentUser = useUser()
 
   // 加载评论列表
   const loadComments = async () => {
     try {
-      const { data } = await getComments(noteId)
-      setComments(data)
+      const response = await getComments({ noteId })
+      setComments(response.data.data ?? [])
     } catch (error) {
-      message.error('加载评论失败')
+      message.error('Failed to load comments')
     }
   }
 
   // 提交评论
   const handleSubmit = async () => {
     if (!currentUser) {
-      message.warning('请先登录')
+      message.warning('Please sign in first')
       return
     }
 
     if (!content.trim()) {
-      message.warning('请输入评论内容')
+      message.warning('Enter a comment')
       return
     }
 
     setLoading(true)
     try {
-      await createComment(noteId, content.trim())
-      message.success('评论成功')
+      await createComment({ noteId, content: content.trim() })
+      message.success('Comment posted')
       setContent('')
       loadComments()
     } catch (error) {
-      message.error('评论失败')
+      message.error('Failed to post comment')
     } finally {
       setLoading(false)
     }
@@ -59,10 +59,10 @@ export function NoteComments({ noteId }: NoteCommentsProps) {
   const handleDelete = async (commentId: number) => {
     try {
       await deleteComment(commentId)
-      message.success('删除成功')
+      message.success('Deleted successfully')
       loadComments()
     } catch (error) {
-      message.error('删除失败')
+      message.error('Delete failed')
     }
   }
 
@@ -76,7 +76,7 @@ export function NoteComments({ noteId }: NoteCommentsProps) {
         <Input.TextArea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          placeholder="写下你的评论..."
+          placeholder="Write your comment..."
           autoSize={{ minRows: 2, maxRows: 6 }}
           maxLength={500}
           showCount
@@ -87,7 +87,7 @@ export function NoteComments({ noteId }: NoteCommentsProps) {
           loading={loading}
           style={{ marginTop: 8, float: 'right' }}
         >
-          发表评论
+          Post Comment
         </Button>
       </div>
 
@@ -98,27 +98,27 @@ export function NoteComments({ noteId }: NoteCommentsProps) {
         renderItem={(comment) => (
           <List.Item
             actions={[
-              comment.userId === currentUser?.userId && (
+              comment.userId === Number(currentUser?.userId) && (
                 <Button
                   type="link"
                   danger
-                  onClick={() => handleDelete(comment.id)}
+                  onClick={() => handleDelete(comment.commentId)}
                 >
-                  删除
+                  Delete
                 </Button>
               ),
             ]}
           >
             <List.Item.Meta
               avatar={<Avatar src={currentUser?.avatarUrl} />}
-              title={currentUser?.username}
+              title={currentUser?.username || 'User'}
               description={
                 <div>
                   <div>{comment.content}</div>
                   <div className="text-sm text-gray-400">
                     {formatDistanceToNow(new Date(comment.createdAt), {
                       addSuffix: true,
-                      locale: zhCN,
+                      locale: enUS,
                     })}
                   </div>
                 </div>

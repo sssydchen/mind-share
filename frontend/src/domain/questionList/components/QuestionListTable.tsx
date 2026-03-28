@@ -67,38 +67,38 @@ const QuestionListTable: React.FC = () => {
    */
   const columns: TableColumnsType<QuestionListEntity> = [
     {
-      title: '题单ID',
+      title: 'Study ListsID',
       dataIndex: 'questionListId',
       key: 'questionListId',
       width: '20%',
     },
     {
-      title: '题单',
+      title: 'Study Lists',
       dataIndex: 'name',
       key: 'name',
       width: '20%',
     },
     {
-      title: '分类',
+      title: 'Type',
       dataIndex: 'type',
       key: 'type',
       render: (type) => {
         switch (type) {
           case 1:
-            return <Tag color="success">普通题单</Tag>
+            return <Tag color="success">Standard Study List</Tag>
           case 2:
-            return <Tag color="red">专属题单</Tag>
+            return <Tag color="red">Exclusive Study List</Tag>
         }
       },
       width: '20%',
     },
     {
-      title: '操作',
+      title: 'Actions',
       key: 'opt',
       render: (_, questionList) => {
         return (
           <div className="flex items-center gap-3">
-            <Tooltip title={'编辑'}>
+            <Tooltip title={'Edit'}>
               <EditTwo
                 theme="multi-color"
                 size="18"
@@ -108,13 +108,13 @@ const QuestionListTable: React.FC = () => {
               />
             </Tooltip>
             <Popconfirm
-              title={'确认删除'}
+              title={'Delete this study list?'}
               onConfirm={async () => {
                 await deleteQuestionListHandle(questionList.questionListId)
-                message.success('删除成功')
+                message.success('Deleted')
               }}
             >
-              <Tooltip title={'删除'}>
+              <Tooltip title={'Delete'}>
                 <DeleteOne
                   theme="multi-color"
                   size="18"
@@ -123,7 +123,7 @@ const QuestionListTable: React.FC = () => {
                 />
               </Tooltip>
             </Popconfirm>
-            <Tooltip title={'详细列表'}>
+            <Tooltip title={'View details'}>
               <ViewList
                 theme="multi-color"
                 size="18"
@@ -151,7 +151,7 @@ const QuestionListTable: React.FC = () => {
           icon={<AddThree />}
           onClick={createButtonClickHandle}
         >
-          创建题单
+          Create Study List
         </Button>
       </div>
       <Table

@@ -5,9 +5,9 @@ export const ALPHANUMERIC_UNDERSCORE = /^[a-zA-Z0-9_]+$/
 export const ALPHANUMERIC_UNDERSCORE_CHINESE =
   /^[\u4e00-\u9fa5_a-zA-Z0-9\-\.]+$/
 
-// 密码允许的字符
+// Password允许的字符
 export const PASSWORD_ALLOWABLE_CHARACTERS =
   /^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+$/
 
-// 邮箱正则表达式
+// Email正则表达式
 export const EMAIL_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/

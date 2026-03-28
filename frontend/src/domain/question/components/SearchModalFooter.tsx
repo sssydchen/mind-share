@@ -15,17 +15,17 @@ const SearchModalFooter: React.FC = () => {
     <div className="flex items-center gap-4">
       <span className="flex items-center gap-1">
         <kbd style={keyStyle}>↵</kbd>
-        <span>选择</span>
+        <span>Select</span>
       </span>
       <span className="flex items-center gap-1">
         <span>
           <kbd style={keyStyle}>↓</kbd> <kbd style={keyStyle}>↑</kbd>
         </span>
-        <span>切换</span>
+        <span>Navigate</span>
       </span>
       <span className="flex items-center gap-1">
         <kbd style={keyStyle}>esc</kbd>
-        <span>关闭</span>
+        <span>Close</span>
       </span>
     </div>
   )

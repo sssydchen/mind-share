@@ -37,27 +37,27 @@ const siderStyle: React.CSSProperties = {
 const items: MenuProps['items'] = [
   {
     key: ADMIN_HOME,
-    label: <Link to={ADMIN_HOME}>仪表盘</Link>,
+    label: <Link to={ADMIN_HOME}>Dashboard</Link>,
     icon: <AppstoreOutlined />,
   },
   {
     key: USER_MANAGE,
-    label: <Link to={USER_MANAGE}>用户管理</Link>,
+    label: <Link to={USER_MANAGE}>Users</Link>,
     icon: <UserOutlined />,
   },
   {
     key: CATEGORY_MANAGE,
-    label: <Link to={CATEGORY_MANAGE}>分类管理</Link>,
+    label: <Link to={CATEGORY_MANAGE}>Categories</Link>,
     icon: <ShopOutlined />,
   },
   {
     key: QUESTION_MANAGE,
-    label: <Link to={QUESTION_MANAGE}>问题管理</Link>,
+    label: <Link to={QUESTION_MANAGE}>Questions</Link>,
     icon: <BarChartOutlined />,
   },
   {
     key: QUESTION_LIST_MANAGE,
-    label: <Link to={QUESTION_LIST_MANAGE}>题单管理</Link>,
+    label: <Link to={QUESTION_LIST_MANAGE}>Study Lists</Link>,
     icon: <CloudOutlined />,
   },
 ]
@@ -75,7 +75,7 @@ const AdminApp: React.FC = () => {
   const location = useLocation()
   const [selectedKeys, setSelectedKeys] = useState([''])
 
-  // TODO: 检测路由变化时需要处理题单模块的特殊情况
+  // TODO: 检测路由变化时需要处理Study Lists模块的特殊情况
   useEffect(() => {
     if (location.pathname.startsWith(QUESTION_LIST_MANAGE)) {
       setSelectedKeys([QUESTION_LIST_MANAGE])
@@ -96,7 +96,7 @@ const AdminApp: React.FC = () => {
   const user = useUser()
 
   if (!user.isAdmin) {
-    return <div>无权限</div>
+    return <div>Access denied</div>
   }
 
   return (

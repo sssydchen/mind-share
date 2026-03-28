@@ -25,7 +25,7 @@ const QuestionView: React.FC<QuestionViewProps> = ({
           </h2>
           {question?.viewCount && (
             <div className="mt-2 text-sm text-gray-800">
-              <span className="text-gray-500">浏览量：</span>
+              <span className="text-gray-500">Views:</span>
               <span className="text-base font-medium">
                 {question?.viewCount}
               </span>
@@ -34,11 +34,11 @@ const QuestionView: React.FC<QuestionViewProps> = ({
         </div>
         <div className="flex gap-4 py-4 text-sm text-neutral-600">
           <div>
-            <span>难度：</span>
+            <span>Difficulty:</span>
             <DifficultyTag difficulty={question?.difficulty}></DifficultyTag>
           </div>
           <div>
-            <span>考点：</span>
+            <span>Topic:</span>
             <span>{question?.examPoint}</span>
           </div>
         </div>
@@ -47,7 +47,7 @@ const QuestionView: React.FC<QuestionViewProps> = ({
           icon={<EditOutlined />}
           onClick={writeOrEditButtonHandle}
         >
-          {question?.userNote.finished ? '修改笔记' : '写笔记'}
+          {question?.userNote.finished ? 'Edit Note' : 'Write Note'}
         </Button>
       </div>
     </div>

@@ -52,13 +52,13 @@ const NoteRankList: React.FC = () => {
   return (
     <div className="gay-x-2 grid grid-cols-12 gap-y-3">
       <div className="col-span-2 flex justify-center text-sm font-medium text-neutral-600">
-        排名
+        Rank
       </div>
       <div className="col-span-7 text-sm font-medium text-neutral-600">
-        姓名
+        Name
       </div>
       <div className="col-span-3 flex justify-center text-sm font-medium text-neutral-600">
-        提交数
+        Posts
       </div>
       {rankList.map((item, index) => (
         <div
@@ -96,7 +96,7 @@ const NoteRankList: React.FC = () => {
       ))}
       {rankList.length === 0 && (
         <div className="col-span-12 text-center text-sm font-medium text-neutral-800">
-          今日暂无提交
+          No submissions yet today
         </div>
       )}
     </div>

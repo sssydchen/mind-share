@@ -19,7 +19,7 @@ export const QUESTION_MANAGE = '/admin/question'
 export const CATEGORY_MANAGE = '/admin/category'
 
 /**
- * 题单管理
+ * Study Lists管理
  */
 export const QUESTION_LIST_MANAGE = '/admin/question-list'
 

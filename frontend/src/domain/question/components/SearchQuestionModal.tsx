@@ -89,7 +89,7 @@ const SearchQuestionModal: React.FC<SearchQuestionModalProps> = ({
       open={isModalOpen}
       footer={<SearchModalFooter />}
       onCancel={toggleIsModalOpen}
-      title={'搜索问题'}
+      title={'Search Questions'}
       afterOpenChange={() => {
         if (inputRef.current) {
           inputRef.current.focus()
@@ -108,7 +108,9 @@ const SearchQuestionModal: React.FC<SearchQuestionModalProps> = ({
       </div>
       {/* 搜索结果列表 */}
       <div className="h-96 max-h-96 overflow-x-auto">
-        <div className="test-xs my-2 font-medium text-gray-700">搜索结果</div>
+        <div className="test-xs my-2 font-medium text-gray-700">
+          Search Results
+        </div>
         {questionVOList.map((item, index) => (
           <div
             key={item.questionId}

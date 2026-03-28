@@ -42,7 +42,7 @@ const CollectionDetail: React.FC<CollectionDetailProps> = ({
           type="text"
           icon={<ArrowLeftOutlined />}
         >
-          返回
+          Back
         </Button>
       </div>
       <NoteList

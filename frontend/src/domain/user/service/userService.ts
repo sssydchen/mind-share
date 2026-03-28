@@ -15,7 +15,7 @@ import { UserEntity, UserState, UserVO } from '../types/types.ts'
  */
 export const userService = {
   /**
-   * 用户注册接口
+   * 用户Sign Up接口
    */
   registerService: (body: RegisterBody) => {
     return httpClient.request<RegisterData>(userApiList.register, {
@@ -24,7 +24,7 @@ export const userService = {
   },
 
   /**
-   * 用户登录接口
+   * 用户Login接口
    */
   loginService: (body: LoginBody) => {
     return httpClient.request<UserState>(userApiList.login, {
@@ -33,14 +33,14 @@ export const userService = {
   },
 
   /**
-   * 自动登录接口
+   * 自动Login接口
    */
   whoamiService: () => {
     return httpClient.request<UserState>(userApiList.whoami)
   },
 
   /**
-   * 更新用户个人信息
+   * 更新用户Profile Settings
    */
   updateMeService: (body: Partial<UserState>) => {
     return httpClient.request<null>(userApiList.updateMe, {
@@ -67,7 +67,7 @@ export const userService = {
   },
 
   /**
-   * 发送验证码
+   * Send Code
    */
   sendVerifyCode: (body: SendVerifyCodeBody) => {
     return httpClient.request<void>(userApiList.sendVerifyCode, {

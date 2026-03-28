@@ -49,7 +49,7 @@ const QuestionListTreeView: React.FC<QuestionListTreeViewProps> = ({
     const selectedNode = selectedNodes[0] as QuestionListCategory
     setSelectedKeys([key])
     /**
-     * 设置选中题单 ID
+     * 设置选中Study Lists ID
      */
     handleQuestionListSelect(selectedNode.key)
   }

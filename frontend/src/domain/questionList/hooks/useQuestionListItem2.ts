@@ -8,7 +8,7 @@ import { Pagination } from '../../../request'
 
 export function useQuestionListItem2(query: QuestionListItemQueryParams) {
   /**
-   * 题单项目列表
+   * Study Lists项目列表
    */
   const [questionListItems, setQuestionListItems] = useState<
     QuestionListItemUserVO[]

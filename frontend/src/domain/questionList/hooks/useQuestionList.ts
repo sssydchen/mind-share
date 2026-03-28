@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { QuestionListEntity } from '../types/types.ts'
 import { adminQuestionListService } from '../service/questionListService.ts'
 
-// 获取题单
+// 获取Study Lists
 export function useQuestionList2(questionListId: number) {
   /**
-   * 获取题单
+   * 获取Study Lists
    */
   const [questionList, setQuestionList] = useState<QuestionListEntity>()
   const [loading, setLoading] = useState(false)

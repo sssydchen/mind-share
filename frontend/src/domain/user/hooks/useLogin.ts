@@ -18,7 +18,7 @@ export function useLogin() {
     localStorage.setItem(kamanoteUserToken, token)
     // 存储用户信息
     dispatch(setUser(data))
-    // 设置登录状态
+    // 设置Login状态
     dispatch(login())
   }
 

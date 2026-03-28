@@ -53,12 +53,13 @@ public class EmailTaskConsumer {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setFrom(from);
             mailMessage.setTo(email);
-            mailMessage.setSubject("卡码笔记- 验证码");
-            mailMessage.setText("您的验证码是：" + verificationCode + "，有效期" + 5 + "分钟，请勿泄露给他人。");
+            mailMessage.setSubject("mind share - Verification Code");
+            mailMessage.setText("Your verification code is " + verificationCode + ". It is valid for "
+                + 5 + " minutes. Please do not share it with others.");
 
             mailSender.send(mailMessage);
 
-            // 保存验证码到 Redis
+            // 保存Verification Code到 Redis
             // 有效时间为 5 分钟
             redisTemplate.opsForValue().set(RedisKey.registerVerificationCode(email), verificationCode, 5, TimeUnit.MINUTES);
         }

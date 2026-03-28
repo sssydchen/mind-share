@@ -85,7 +85,7 @@ const QuestionPage: React.FC = () => {
 
   const createOrUpdateNoteClickHandle = async () => {
     if (!app.isLogin) {
-      message.info('请先登录')
+      message.info('Please sign in first')
       return
     }
 
@@ -99,7 +99,7 @@ const QuestionPage: React.FC = () => {
         if (noteId) {
           userFinishedQuestion(noteId, value)
         }
-        message.success('笔记已提交')
+        message.success('Note submitted')
       } else {
         // 修改笔记操作
         if (!question?.userNote) return
@@ -107,7 +107,7 @@ const QuestionPage: React.FC = () => {
           content: value,
           questionId: Number(questionId),
         })
-        message.success('笔记已修改')
+        message.success('Note updated')
         toggleEditorVisible()
       }
     } catch (e: any) {
@@ -133,7 +133,7 @@ const QuestionPage: React.FC = () => {
             <div className="h-[calc(100vh-var(--header-height)-65px)]">
               <Suspense
                 fallback={
-                  <Spin tip="加载编辑器中" className="mt-12">
+                  <Spin tip="Loading editor" className="mt-12">
                     {''}
                   </Spin>
                 }
@@ -149,7 +149,7 @@ const QuestionPage: React.FC = () => {
                 icon={<EyeOutlined />}
                 onClick={() => setIsShowPreview(true)}
               >
-                预览笔记
+                Preview Note
               </Button>
               <Button
                 type="primary"
@@ -157,7 +157,7 @@ const QuestionPage: React.FC = () => {
                 loading={createBtnLoading}
                 onClick={createOrUpdateNoteClickHandle}
               >
-                {question?.userNote.finished ? '修改笔记' : '提交笔记'}
+                {question?.userNote.finished ? 'Update Note' : 'Submit Note'}
               </Button>
             </div>
           </div>

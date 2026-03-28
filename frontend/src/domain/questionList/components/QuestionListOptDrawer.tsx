@@ -54,23 +54,23 @@ const QuestionListOptDrawer: React.FC<QuestionListOptDrawerProps> = ({
           description: values.description,
           type: Number(values.type),
         })
-        message.success('创建题单成功')
+        message.success('Study list created')
       } else {
         // 更新操作
         if (selectedQuestionList === undefined) {
-          message.error('未选中题单')
+          message.error('No study list selected')
           return
         }
         const diff = diffObject(selectedQuestionList, values)
         if (Object.keys(diff).length === 0) {
-          message.warning('未作任何修改')
+          message.warning('No changes made')
           return
         }
         // @ts-expect-error tes expect error
         updateQuestionListHandle(selectedQuestionList.questionListId, {
           ...diff,
         })
-        message.success('更新题单成功')
+        message.success('Study list updated')
       }
       toggleIsDrawerOpen()
       form.resetFields()
@@ -84,7 +84,7 @@ const QuestionListOptDrawer: React.FC<QuestionListOptDrawerProps> = ({
   return (
     <Drawer
       open={isDrawerOpen}
-      title={mode === 'create' ? '创建分类' : '编辑分类'}
+      title={mode === 'create' ? 'Create Study List' : 'Edit Study List'}
       onClose={toggleIsDrawerOpen}
       width={450}
     >
@@ -95,45 +95,45 @@ const QuestionListOptDrawer: React.FC<QuestionListOptDrawerProps> = ({
         onFinish={onFinishHandle}
       >
         <Form.Item
-          label="题单名称"
+          label="Study List Name"
           name="name"
           rules={[
-            { required: true, message: '请输入题单名称' },
+            { required: true, message: 'Enter a study list name' },
             {
               min: 2,
               max: 32,
-              message: '题单名称长度在 2 - 32 个字符范围内',
+              message: 'Study list name must be between 2 and 32 characters',
             },
           ]}
         >
-          <Input placeholder="请输入题单名称" />
+          <Input placeholder="Enter a study list name" />
         </Form.Item>
         <Form.Item
-          label="题单描述"
+          label="Study List Description"
           name="description"
           rules={[
             {
               min: 2,
               max: 128,
-              message: '分类描述长度在 2 - 255 个字符范围内',
+              message: 'Description must be between 2 and 128 characters',
             },
           ]}
         >
-          <TextArea placeholder="请输入题单描述"></TextArea>
+          <TextArea placeholder="Enter a study list description"></TextArea>
         </Form.Item>
         <Form.Item
-          label="题单分类"
+          label="Study List Type"
           name="type"
-          rules={[{ required: true, message: '请选择题单分类' }]}
+          rules={[{ required: true, message: 'Select a study list type' }]}
         >
           <Select>
-            <Select.Option value="1">普通题单</Select.Option>
-            <Select.Option value="2">专属题单</Select.Option>
+            <Select.Option value="1">Standard Study List</Select.Option>
+            <Select.Option value="2">Exclusive Study List</Select.Option>
           </Select>
         </Form.Item>
         <Form.Item>
           <Button htmlType="submit" type="primary" loading={loading} block>
-            {mode === 'create' ? '确认创建' : '确认更新'}
+            {mode === 'create' ? 'Create' : 'Update'}
           </Button>
         </Form.Item>
       </Form>

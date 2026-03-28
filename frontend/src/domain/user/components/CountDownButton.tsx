@@ -37,7 +37,7 @@ const CountDownButton: React.FC<CountDownButtonProps> = ({
       disabled={countdown > 0}
       onClick={handleClick}
     >
-      {countdown > 0 ? `${countdown}s后重试` : '发送验证码'}
+      {countdown > 0 ? `Retry in ${countdown}s` : 'Send Code'}
     </Button>
   )
 }

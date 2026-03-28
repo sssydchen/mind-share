@@ -6,18 +6,20 @@ const Top3Count: React.FC = () => {
 
   return (
     <div className="mb-4 flex items-center justify-between text-sm font-medium text-neutral-500">
-      {/* 上月排名前三次数 */}
       <div className="flex flex-col items-center">
-        <div className="mb-1 text-xs text-neutral-400">上月排名前三次数</div>
+        <div className="mb-1 text-xs text-neutral-400">
+          Top 3 finishes last month
+        </div>
         <div className="text-base font-bold text-neutral-700">
-          {top3Count?.lastMonthTop3Count ?? 0} 次
+          {top3Count?.lastMonthTop3Count ?? 0}
         </div>
       </div>
-      {/* 本月排名前三次数 */}
       <div className="flex flex-col items-center">
-        <div className="mb-1 text-xs text-neutral-400">本月排名前三次数</div>
+        <div className="mb-1 text-xs text-neutral-400">
+          Top 3 finishes this month
+        </div>
         <div className="text-base font-bold text-neutral-700">
-          {top3Count?.thisMonthTop3Count ?? 0} 次
+          {top3Count?.thisMonthTop3Count ?? 0}
         </div>
       </div>
     </div>

@@ -46,7 +46,7 @@ const OptionsCard: React.FC<OptionsCardProps> = ({
    */
   async function likeButtonClickHandle() {
     if (!app.isLogin) {
-      message.info('请先登录')
+      message.info('Please sign in first')
       return
     }
 
@@ -71,7 +71,7 @@ const OptionsCard: React.FC<OptionsCardProps> = ({
    */
   async function collectButtonClickHandle() {
     if (!app.isLogin) {
-      message.info('请先登录')
+      message.info('Please sign in first')
       return
     }
     if (!note || !note.userActions) return
@@ -86,7 +86,7 @@ const OptionsCard: React.FC<OptionsCardProps> = ({
    */
   const handleCommentClick = async () => {
     if (!app.isLogin) {
-      message.info('请先登录')
+      message.info('Please sign in first')
       return
     }
     setCommentDrawerVisible(true)
@@ -106,7 +106,7 @@ const OptionsCard: React.FC<OptionsCardProps> = ({
           icon={note?.userActions?.isLiked ? <LikeFilled /> : <LikeOutlined />}
           onClick={likeButtonClickHandle}
         >
-          {note?.likeCount || 0} 次点赞
+          {note?.likeCount || 0} likes
         </Button>
         <Button
           type="text"
@@ -116,7 +116,7 @@ const OptionsCard: React.FC<OptionsCardProps> = ({
           }
           onClick={collectButtonClickHandle}
         >
-          {note?.collectCount || 0} 次收藏
+          {note?.collectCount || 0} saves
         </Button>
         <Button
           type="text"
@@ -124,12 +124,12 @@ const OptionsCard: React.FC<OptionsCardProps> = ({
           icon={<MessageOutlined />}
           onClick={handleCommentClick}
         >
-          {localCommentCount} 条评论
+          {localCommentCount} comments
         </Button>
       </div>
 
       <Drawer
-        title="评论"
+        title="Comments"
         placement="right"
         width={500}
         onClose={() => setCommentDrawerVisible(false)}

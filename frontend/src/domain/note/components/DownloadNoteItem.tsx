@@ -10,12 +10,12 @@ const DownloadNoteItem: React.FC = () => {
 
   const handleDownload = async () => {
     if (!app.isLogin) {
-      message.info('请先登录')
+      message.info('Please sign in first')
       return
     }
 
     if (loading) {
-      message.info('正在下载中...')
+      message.info('Download already in progress...')
       return
     }
 
@@ -30,7 +30,7 @@ const DownloadNoteItem: React.FC = () => {
       const url = URL.createObjectURL(blob)
       const link = document.createElement('a')
       link.href = url
-      link.download = '卡码笔记' + Date.now() + '.md'
+      link.download = 'mind share' + Date.now() + '.md'
       link.style.display = 'none'
       document.body.appendChild(link)
       link.click()
@@ -47,7 +47,7 @@ const DownloadNoteItem: React.FC = () => {
       className="text-black-88 cursor-pointer px-4 font-sans text-sm"
       onClick={handleDownload}
     >
-      {loading ? '下载中...' : '下载笔记'}
+      {loading ? 'Downloading...' : 'Download Notes'}
     </span>
   )
 }

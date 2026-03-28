@@ -5,17 +5,17 @@ import { setUser } from '../../../store/userSlice.ts'
 import { useUser } from './useUser.ts'
 
 /**
- * 更新个人信息 hook
+ * 更新Profile Settings hook
  */
 export function useUserForm() {
   const dispatch = useDispatch()
   const user = useUser()
 
   /**
-   * 更新个人信息
+   * 更新Profile Settings
    */
   async function updateUserInfo(newUserInfo: Partial<UserState>) {
-    // 将更新的个人信息字段发送给后端
+    // 将更新的Profile Settings字段发送给后端
     // await userService.updateMeService(newUserInfo)
     // 将更新的内容提交到 store 中
     try {

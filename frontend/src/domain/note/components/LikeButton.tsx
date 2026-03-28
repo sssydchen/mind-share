@@ -28,7 +28,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
           (currentUserLiked ? 'text-blue-600' : 'text-gray-500')
         }
       >
-        {likeCount} 次点赞
+        {likeCount} likes
       </span>
     </div>
   )

@@ -36,21 +36,21 @@ enum MessageType {
 // 消息类型配置
 const messageTypeConfig = {
   [MessageType.LIKE]: {
-    label: '点赞消息',
+    label: 'Like Notifications',
     icon: HeartOutlined,
     color: '#ff4d4f',
     bgColor: '#fff2f0',
     borderColor: '#ffccc7',
   },
   [MessageType.COMMENT]: {
-    label: '评论消息',
+    label: 'Comment Notifications',
     icon: MessageOutlined,
     color: '#1890ff',
     bgColor: '#f0f9ff',
     borderColor: '#91d5ff',
   },
   [MessageType.SYSTEM]: {
-    label: '系统消息',
+    label: 'System Notifications',
     icon: BellOutlined,
     color: '#52c41a',
     bgColor: '#f6ffed',
@@ -97,31 +97,31 @@ const MessagePage: React.FC = () => {
     }
   }
 
-  // 处理删除消息
+  // 处理Delete Message
   const handleDeleteMessage = (messageId: number) => {
     deleteMessage(messageId)
-    message.success('消息已删除')
+    message.success('Message deleted')
   }
 
-  // 处理标记已读
+  // 处理Mark as Read
   const handleMarkAsRead = (messageId: number) => {
     markMessagesAsRead([messageId])
-    message.success('已标记为已读')
+    message.success('Marked as read')
   }
 
   // 处理全部已读
   const handleMarkAllAsRead = () => {
     markAllMessagesAsRead()
-    message.success('已全部标记为已读')
+    message.success('All messages marked as read')
   }
 
   // 获取操作描述
   const getActionText = (type: number) => {
     switch (type) {
       case MessageType.LIKE:
-        return '赞了你的笔记'
+        return 'liked your note'
       case MessageType.COMMENT:
-        return '评论了你的笔记'
+        return 'commented on your note'
       case MessageType.SYSTEM:
         return ''
       default:
@@ -145,8 +145,12 @@ const MessagePage: React.FC = () => {
           image={Empty.PRESENTED_IMAGE_SIMPLE}
           description={
             <div className="text-center">
-              <p className="text-lg font-medium text-gray-900">暂无消息</p>
-              <p className="text-sm text-gray-500">当有新消息时会在这里显示</p>
+              <p className="text-lg font-medium text-gray-900">
+                No messages yet
+              </p>
+              <p className="text-sm text-gray-500">
+                New messages will appear here
+              </p>
             </div>
           }
         />
@@ -209,22 +213,22 @@ const MessagePage: React.FC = () => {
         <div className="min-w-0 flex-1">
           {/* 头部：发送者+操作+帖子标题+新标签 */}
           <div className="mb-1 flex flex-wrap items-center gap-2">
-            {/* 发送者昵称 */}
+            {/* 发送者Display Name */}
             <span className="text-base font-semibold text-gray-900">
-              {isSystem ? '系统通知' : message.sender.username}
+              {isSystem ? 'System' : message.sender.username}
             </span>
             {/* 操作描述 */}
             {!isSystem && <span className="text-gray-700">{actionText}</span>}
             {/* 帖子标题 */}
             {postTitle && (
               <span className="rounded bg-blue-50 px-1 font-medium text-blue-700">
-                《{postTitle}》
+                {postTitle}
               </span>
             )}
             {/* 新标签 */}
             {!message.isRead && (
               <span className="ml-2 rounded bg-red-500 px-2 py-0.5 text-xs text-white">
-                新
+                New
               </span>
             )}
           </div>
@@ -246,7 +250,7 @@ const MessagePage: React.FC = () => {
                     {
                       key: 'read',
                       icon: <CheckOutlined />,
-                      label: '标记已读',
+                      label: 'Mark as Read',
                       onClick: () => handleMarkAsRead(message.messageId),
                     },
                   ]
@@ -254,7 +258,7 @@ const MessagePage: React.FC = () => {
               {
                 key: 'delete',
                 icon: <DeleteOutlined />,
-                label: '删除消息',
+                label: 'Delete Message',
                 danger: true,
                 onClick: () => handleDeleteMessage(message.messageId),
               },
@@ -281,7 +285,7 @@ const MessagePage: React.FC = () => {
       key: 'all',
       label: (
         <span className="flex items-center gap-1">
-          全部
+          All
           {getUnreadCount(groupedMessages.all) > 0 && (
             <Badge count={getUnreadCount(groupedMessages.all)} size="small" />
           )}
@@ -293,7 +297,7 @@ const MessagePage: React.FC = () => {
       key: 'like',
       label: (
         <span className="flex items-center gap-1">
-          点赞
+          Likes
           {getUnreadCount(groupedMessages.like) > 0 && (
             <Badge count={getUnreadCount(groupedMessages.like)} size="small" />
           )}
@@ -305,7 +309,7 @@ const MessagePage: React.FC = () => {
       key: 'comment',
       label: (
         <span className="flex items-center gap-1">
-          评论
+          Comments
           {getUnreadCount(groupedMessages.comment) > 0 && (
             <Badge
               count={getUnreadCount(groupedMessages.comment)}
@@ -320,7 +324,7 @@ const MessagePage: React.FC = () => {
       key: 'system',
       label: (
         <span className="flex items-center gap-1">
-          系统
+          System
           {getUnreadCount(groupedMessages.system) > 0 && (
             <Badge
               count={getUnreadCount(groupedMessages.system)}
@@ -343,8 +347,10 @@ const MessagePage: React.FC = () => {
     >
       <Panel>
         <div className="message-header mb-4">
-          <h1 className="mb-1 text-2xl font-bold">消息中心</h1>
-          <p className="text-sm text-gray-500">查看你的评论、点赞和系统通知</p>
+          <h1 className="mb-1 text-2xl font-bold">Messages</h1>
+          <p className="text-sm text-gray-500">
+            View your comments, likes, and system notifications
+          </p>
         </div>
         <div className="mb-4 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
           <MessageStats
@@ -365,7 +371,7 @@ const MessagePage: React.FC = () => {
               size="small"
               className="flex w-full items-center gap-1 sm:w-auto"
             >
-              全部标记为已读
+              Mark all as read
             </Button>
           )}
         </div>

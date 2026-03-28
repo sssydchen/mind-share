@@ -2,11 +2,13 @@
  * 笔记评论
  */
 export interface NoteComment {
-  id: number
+  commentId: number
   noteId: number
   userId: number
+  parentId?: number
   content: string
+  likeCount?: number
+  replyCount?: number
   createdAt: string
   updatedAt: string
-  isDeleted: boolean
 }

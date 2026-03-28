@@ -20,20 +20,17 @@ spring:
         min-idle: 0
         max-wait: 2000
   mail:
-    host: smtp.qq.com
-    port: 465
-    username: your@qq.com
-    password: password
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
     properties:
       mail:
         smtp:
           auth: true
-          ssl:
+          starttls:
             enable: true
-          socketFactory:
-            port: 465
-            class: javax.net.ssl.SSLSocketFactory
-    protocol: smtps
+    protocol: smtp
     default-encoding: UTF-8
 
 mybatis:
@@ -45,7 +42,7 @@ mybatis:
   type-handlers-package: com.kama.notes.typehandler
 
 jwt:
-  secret: abc123
+  secret: ${JWT_SECRET:dev-jwt-secret-key-for-mind-share-2026-32b}
   expiration: 2592000
 
 server:
