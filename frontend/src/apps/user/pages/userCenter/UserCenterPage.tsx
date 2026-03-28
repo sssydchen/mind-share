@@ -20,17 +20,17 @@ const UserCenterPage: React.FC = () => {
   const items: MenuItem[] = [
     {
       key: USER_INFO,
-      label: <NavLink to={USER_INFO}>个人信息</NavLink>,
+      label: <NavLink to={USER_INFO}>Profile Settings</NavLink>,
       icon: <ProfileOutlined />,
     },
     {
       key: USER_COLLECT,
-      label: <NavLink to={USER_COLLECT}>个人收藏</NavLink>,
+      label: <NavLink to={USER_COLLECT}>Saved Collections</NavLink>,
       icon: <AppstoreOutlined />,
     },
     {
       key: USER_NOTE,
-      label: <NavLink to={USER_NOTE}>个人笔记</NavLink>,
+      label: <NavLink to={USER_NOTE}>My Notes</NavLink>,
       icon: <SettingOutlined />,
     },
   ]

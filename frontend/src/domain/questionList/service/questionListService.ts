@@ -14,7 +14,7 @@ import {
 
 export const adminQuestionListService = {
   /**
-   * 获取题单服务
+   * 获取Study Lists服务
    */
   getQuestionListByIdService: (questionListId: number) => {
     return httpClient.request<QuestionListEntity>(
@@ -26,7 +26,7 @@ export const adminQuestionListService = {
   },
 
   /**
-   * 获取题单列表服务
+   * 获取Study Lists列表服务
    */
   getQuestionListService: () => {
     return httpClient.request<QuestionListEntity[]>(
@@ -35,7 +35,7 @@ export const adminQuestionListService = {
   },
 
   /**
-   * 创建题单服务
+   * 创建Study Lists服务
    */
   createQuestionListService: (params: CreateOrUpDateQuestionListBody) => {
     return httpClient.request<{
@@ -46,7 +46,7 @@ export const adminQuestionListService = {
   },
 
   /**
-   * 删除题单服务
+   * 删除Study Lists服务
    */
   deleteQuestionListService: (questionListId: number) => {
     return httpClient.request<{
@@ -57,7 +57,7 @@ export const adminQuestionListService = {
   },
 
   /**
-   * 更新题单信息服务
+   * 更新Study Lists信息服务
    */
   updateQuestionListService: (
     questionListId: number,
@@ -70,7 +70,7 @@ export const adminQuestionListService = {
   },
 
   /**
-   * 获取题单项列表服务
+   * 获取Study Lists项列表服务
    */
   getQuestionListItemService: (questionListId: number) => {
     return httpClient.request<QuestionListItemVO[]>(
@@ -82,7 +82,7 @@ export const adminQuestionListService = {
   },
 
   /**
-   * 创建题单项
+   * 创建Study Lists项
    */
   createQuestionListItemService: (
     questionListId: number,
@@ -99,7 +99,7 @@ export const adminQuestionListService = {
   },
 
   /**
-   * 删除题单项
+   * 删除Study Lists项
    */
   deleteQuestionListItemService: (
     questionListId: number,
@@ -111,7 +111,7 @@ export const adminQuestionListService = {
   },
 
   /**
-   * 题单项排序
+   * Study Lists项排序
    */
   sortQuestionListItemService: (body: SortQuestionListItemBody) => {
     return httpClient.request(adminQuestionListApi.sortQuestionListItems, {
@@ -122,7 +122,7 @@ export const adminQuestionListService = {
 
 export const userQuestionListService = {
   /**
-   * 获取题单项列表
+   * 获取Study Lists项列表
    */
   getQuestionListByIdService: (query: QuestionListItemQueryParams) => {
     return httpClient.request<QuestionListItemUserVO[]>(

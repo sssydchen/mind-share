@@ -24,7 +24,7 @@ export const markAllAsRead = () => {
 }
 
 /**
- * 删除消息
+ * Delete Message
  */
 export const deleteMessage = (messageId: number) => {
   return http.delete<ApiResponse<void>>(`/api/messages/${messageId}`)

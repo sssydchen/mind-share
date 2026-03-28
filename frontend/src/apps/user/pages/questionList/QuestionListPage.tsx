@@ -16,13 +16,13 @@ import TrainingCampListHeader from './components/TrainingCampListHeader.tsx'
 
 const QuestionListPage: React.FC = () => {
   /**
-   * 获取题单分类，并根据分类，将其转化为树形结构
+   * 获取Study Lists分类，并根据分类，将其转化为树形结构
    */
   const { questionLists } = useQuestionLists()
   const treeData = convertQuestionListToTreeStruct(questionLists)
 
   /**
-   * 监听选中的题单 ID，可用来获取该题单对应的题单项
+   * 监听选中的Study Lists ID，可用来获取该Study Lists对应的Study Lists项
    */
   const [selectedQuestionListId, setSelectedQuestionListId] = useState<
     number | undefined
@@ -32,7 +32,7 @@ const QuestionListPage: React.FC = () => {
   }
 
   /**
-   * 题单项查询参数
+   * Study Lists项查询参数
    */
   const [queryParams, setQueryParams] = useState<QuestionListItemQueryParams>({
     page: 1,
@@ -94,7 +94,7 @@ const QuestionListPage: React.FC = () => {
             <TrainingCampListInfo />
           )}
           {selectedQuestionListId === undefined && (
-            <Empty description={'请选择题单'}></Empty>
+            <Empty description={'Select a study list'}></Empty>
           )}
           {selectedQuestionListId !== undefined &&
             questionListItems.length > 0 && (

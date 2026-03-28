@@ -2,7 +2,7 @@ import React from 'react'
 import { Avatar, Button, List } from 'antd'
 import { LikeOutlined, LikeFilled } from '@ant-design/icons'
 import { formatDistanceToNow } from 'date-fns'
-import { zhCN } from 'date-fns/locale'
+import { enUS } from 'date-fns/locale'
 import { Comment } from '@/domain/comment/types.ts'
 
 interface CommentItemProps {
@@ -28,10 +28,10 @@ const CommentItem: React.FC<CommentItemProps> = ({
           }
           onClick={onLike}
         >
-          {comment.likeCount || 0} 赞
+          {comment.likeCount || 0} likes
         </Button>,
         <Button key="reply" type="text" onClick={onReply}>
-          回复
+          Reply
         </Button>,
       ]}
     >
@@ -44,7 +44,7 @@ const CommentItem: React.FC<CommentItemProps> = ({
             <div className="text-sm text-gray-400">
               {formatDistanceToNow(new Date(comment.createdAt), {
                 addSuffix: true,
-                locale: zhCN,
+                locale: enUS,
               })}
             </div>
           </div>

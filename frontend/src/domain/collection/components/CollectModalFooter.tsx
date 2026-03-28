@@ -16,10 +16,10 @@ const CollectModalFooter: React.FC<CollectModalFooterProps> = ({
         className={'cursor-pointer text-sm text-blue-400 hover:text-blue-500'}
         onClick={onCreate}
       >
-        +&nbsp;创建收藏夹
+        +&nbsp;Create Collection
       </div>
       <Button type={'primary'} onClick={onConfirm}>
-        确定
+        Confirm
       </Button>
     </div>
   )

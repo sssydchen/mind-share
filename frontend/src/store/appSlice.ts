@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 type AppState = {
-  isLogin: boolean // 记录登录状态
+  isLogin: boolean // 记录Login状态
   isLoaded: boolean // 记录加载状态
   isAdminApp: boolean // 记录当前是否在管理端下
 }
@@ -34,11 +34,6 @@ const appSlice = createSlice({
   },
 })
 
-export const {
-  login,
-  logout,
-  loaded,
-  intoAdminApp,
-  outAdminApp,
-} = appSlice.actions
+export const { login, logout, loaded, intoAdminApp, outAdminApp } =
+  appSlice.actions
 export default appSlice.reducer

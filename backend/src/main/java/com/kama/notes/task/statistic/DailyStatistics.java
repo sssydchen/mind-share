@@ -25,7 +25,7 @@ public class DailyStatistics {
     StatisticMapper statisticMapper;
 
     /**
-     * 统计日常提交笔记、登录数据
+     * 统计日常提交笔记、Login数据
      */
     @Scheduled(cron = "0 59 23 * * ?")
     public void dailyStatistics() {

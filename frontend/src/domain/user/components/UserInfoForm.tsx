@@ -73,13 +73,13 @@ const UserInfoForm: React.FC = () => {
 
     // 如果没有修改任何字段，提示用户无需更新
     if (Object.keys(diff).length === 0) {
-      message.info('未更新任何字段')
+      message.info('No fields were updated')
       return
     }
 
     try {
       await updateUserInfo(diff)
-      message.success('更新成功！')
+      message.success('Profile updated')
     } catch (e: any) {
       message.error(e.message)
     } finally {
@@ -132,7 +132,7 @@ const UserInfoForm: React.FC = () => {
           <p className="text-gray-600">{user.email}</p>
         </div>
         <Button onClick={handleEditToggle} className="ml-auto">
-          {editing ? '取消编辑' : '编辑'}
+          {editing ? 'Cancel Editing' : 'Edit'}
         </Button>
       </div>
       <Form
@@ -142,41 +142,41 @@ const UserInfoForm: React.FC = () => {
         className={editing ? '' : 'pointer-events-none'}
       >
         <Form.Item
-          label="用户名"
+          label="User Name"
           name="username"
-          rules={[{ required: true, message: '请输入用户名' }]}
+          rules={[{ required: true, message: 'Enter a display name' }]}
         >
           <Input disabled={!editing} />
         </Form.Item>
-        <Form.Item label="性别" name="gender">
+        <Form.Item label="Gender" name="gender">
           <Select disabled={!editing}>
-            <Select.Option value={1}>男</Select.Option>
-            <Select.Option value={2}>女</Select.Option>
-            <Select.Option value={3}>保密</Select.Option>
+            <Select.Option value={1}>Male</Select.Option>
+            <Select.Option value={2}>Female</Select.Option>
+            <Select.Option value={3}>Prefer not to say</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item label="生日" name="birthday">
+        <Form.Item label="Birthday" name="birthday">
           <DatePicker disabled={!editing} style={{ width: '100%' }} />
         </Form.Item>
         <Form.Item
-          label="邮箱"
+          label="Email"
           name="email"
-          rules={[{ type: 'email', message: '请输入有效的邮箱地址' }]}
+          rules={[{ type: 'email', message: 'Enter a valid email address' }]}
         >
           <Input disabled={!editing} />
         </Form.Item>
-        <Form.Item label="学校" name="school">
+        <Form.Item label="School" name="school">
           <Input disabled={!editing} />
         </Form.Item>
-        <Form.Item label="个性签名" name="signature">
+        <Form.Item label="Signature" name="signature">
           <Input.TextArea rows={3} disabled={!editing} />
         </Form.Item>
         {editing && (
           <Form.Item>
             <Button type="primary" htmlType="submit" className="mr-2">
-              保存
+              Save
             </Button>
-            <Button onClick={handleEditToggle}>取消</Button>
+            <Button onClick={handleEditToggle}>Cancel</Button>
           </Form.Item>
         )}
       </Form>

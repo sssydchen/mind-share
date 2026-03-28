@@ -12,13 +12,13 @@ interface DifficultyTagProps {
 const DifficultyTag: React.FC<DifficultyTagProps> = ({ difficulty }) => {
   switch (difficulty) {
     case QuestionDifficulty.Easy:
-      return <Tag color="success">简单</Tag>
+      return <Tag color="success">Easy</Tag>
     case QuestionDifficulty.Medium:
-      return <Tag color="warning">中等</Tag>
+      return <Tag color="warning">Medium</Tag>
     case QuestionDifficulty.Hard:
-      return <Tag color="red">困难</Tag>
+      return <Tag color="red">Hard</Tag>
     default:
-      return <Tag color="default">难度</Tag>
+      return <Tag color="default">Difficulty</Tag>
   }
 }
 

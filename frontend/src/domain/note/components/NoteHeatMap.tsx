@@ -32,11 +32,11 @@ const NoteHeatMap: React.FC = () => {
           return element
         }
         const date = new Date(value.date)
-        const dateString = `${date.getMonth() + 1}月${date.getDate()}日`
+        const dateString = `${date.getMonth() + 1}/${date.getDate()}`
         const countString = value.count
-          ? `提交 ${value.count} 次笔记`
-          : '未提交笔记'
-        const rankString = `排名 ${value?.rank}`
+          ? `${value.count} note submissions`
+          : 'No note submitted'
+        const rankString = `Rank ${value?.rank}`
         return (
           <Tooltip
             title={`${dateString} ${countString} ${rankString}`}

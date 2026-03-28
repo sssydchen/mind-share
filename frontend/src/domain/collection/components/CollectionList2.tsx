@@ -29,7 +29,7 @@ const CollectionList2: React.FC<CollectionList2Props> = ({
         const items: MenuProps['items'] = [
           {
             key: item.collectionId + 'ic2',
-            label: <div className="text-gray-500">编辑收藏夹</div>,
+            label: <div className="text-gray-500">Edit Collection</div>,
             icon: <EditOutlined className="text-gray-500" />,
             onClick: () => {
               message.info('todo...')
@@ -37,7 +37,7 @@ const CollectionList2: React.FC<CollectionList2Props> = ({
           },
           {
             key: item.collectionId + 'ic',
-            label: <div className="text-gray-500">删除收藏夹</div>,
+            label: <div className="text-gray-500">Delete Collection</div>,
             icon: <DeleteOutlined className="text-gray-500" />,
             onClick: () => {
               message.info('todo...')

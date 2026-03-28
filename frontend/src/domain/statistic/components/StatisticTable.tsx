@@ -5,37 +5,37 @@ import { useStatistic } from '../hooks/useStatistic.ts'
 
 const columns: TableProps<StatisticEntity>['columns'] = [
   {
-    title: '日期',
+    title: 'Date',
     dataIndex: 'date',
     key: 'date',
   },
   {
-    title: '登录人数',
+    title: 'Logins',
     dataIndex: 'loginCount',
     key: 'loginCount',
   },
   {
-    title: '今日注册',
+    title: 'Sign Ups Today',
     dataIndex: 'registerCount',
     key: 'registerCount',
   },
   {
-    title: '累计注册',
+    title: 'Total Sign Ups',
     dataIndex: 'totalRegisterCount',
     key: 'totalRegisterCount',
   },
   {
-    title: '今日笔记数',
+    title: 'Notes Today',
     dataIndex: 'noteCount',
     key: 'noteCount',
   },
   {
-    title: '今日提交笔记人数',
+    title: 'Note Authors Today',
     dataIndex: 'submitNoteCount',
     key: 'submitNoteCount',
   },
   {
-    title: '累计笔记数',
+    title: 'Total Notes',
     dataIndex: 'totalNoteCount',
     key: 'totalNoteCount',
   },

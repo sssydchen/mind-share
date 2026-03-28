@@ -5,10 +5,10 @@ import { login } from '../../../store/appSlice.ts'
 import { message } from 'antd'
 import { kamanoteUserToken } from '../../../base/constants'
 import { setUser } from '../../../store/userSlice.ts'
-import type { UserEntity } from '../types/types.ts'
+import type { UserState } from '../types/types.ts'
 
 export function useRegister() {
-  // 注册请求函数
+  // Sign Up请求函数
   const dispatch = useDispatch()
 
   async function registerHandle(registerBody: RegisterBody) {
@@ -25,11 +25,19 @@ export function useRegister() {
         // 存储用户信息
         dispatch(
           setUser({
-            ...data,
-            ...registerBody,
-          } as UserEntity),
+            userId: data.userId,
+            username: registerBody.username,
+            account: registerBody.account,
+            email: registerBody.email,
+            avatarUrl: '',
+            gender: 3,
+            school: '',
+            signature: '',
+            birthday: '',
+            isAdmin: 0,
+          } as UserState),
         )
-        // 设置登录状态
+        // 设置Login状态
         dispatch(login())
       }
     } catch (e: any) {

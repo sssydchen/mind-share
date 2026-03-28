@@ -15,7 +15,7 @@ const ProfileMenu: React.FC = () => {
   const user = useUser()
   const app = useApp()
   /**
-   * 退出登录处理函数
+   * Handle logout.
    */
   const logout = useLogout()
   const handleLogout = () => {
@@ -33,7 +33,7 @@ const ProfileMenu: React.FC = () => {
           size="18"
           fill={['#333', '#8dbaf1', '#ffffff', '#e64155']}
         />
-        个人主页
+        Profile
       </NavLink>
       <NavLink className={itemCss} to={`${USER_CENTER}`}>
         <User
@@ -41,7 +41,7 @@ const ProfileMenu: React.FC = () => {
           size="18"
           fill={['#333', '#8dbaf1', '#ffffff', '#e64155']}
         />
-        个人信息
+        Profile Settings
       </NavLink>
       <NavLink className={itemCss} to={MESSAGE_CENTER}>
         <Message
@@ -49,7 +49,7 @@ const ProfileMenu: React.FC = () => {
           size="18"
           fill={['#333', '#8dbaf1', '#ffffff', '#e64155']}
         />
-        消息中心
+        Messages
       </NavLink>
       {/* 只有管理员才能查看后台内容 */}
       {user.isAdmin === Admin.ADMIN && (
@@ -59,7 +59,7 @@ const ProfileMenu: React.FC = () => {
             size="18"
             fill={['#333', '#8dbaf1', '#ffffff', '#e64155']}
           />
-          {!app.isAdminApp ? '后台管理' : '返回用户端'}
+          {!app.isAdminApp ? 'Admin Panel' : 'Back to User App'}
         </NavLink>
       )}
       <div className={itemCss + ' cursor-pointer'} onClick={handleLogout}>
@@ -68,7 +68,7 @@ const ProfileMenu: React.FC = () => {
           size="18"
           fill={['#333', '#8dbaf1', '#ffffff', '#e64155']}
         />
-        退出登录
+        Log Out
       </div>
     </div>
   )

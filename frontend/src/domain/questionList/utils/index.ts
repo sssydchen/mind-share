@@ -13,13 +13,13 @@ export function convertQuestionListToTreeStruct(
   const result = [
     {
       key: QuestionListParentNode.COMMON,
-      title: '普通题单',
+      title: 'Standard Study Lists',
       questionListId: undefined,
       children: [],
     },
     {
       key: QuestionListParentNode.TRAINING_CAMP,
-      title: '专属题单',
+      title: 'Exclusive Study Lists',
       questionListId: undefined,
       children: [],
     },

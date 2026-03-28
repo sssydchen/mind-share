@@ -41,7 +41,7 @@ const UserNoteList: React.FC<UserNoteListProps> = ({ userId }) => {
             setNoteCollectStatusHandle={setNoteCollectStatusHandle}
             showOptions={false}
           ></NoteList>
-          {noteList.length === 0 && <Empty description={'暂无笔记'} />}
+          {noteList.length === 0 && <Empty description={'No notes yet'} />}
         </>
       )}
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Avatar, Button, Pagination } from 'antd'
 import { LikeOutlined, LikeFilled, MessageOutlined } from '@ant-design/icons'
 import { formatDistanceToNow } from 'date-fns'
-import { zhCN } from 'date-fns/locale'
+import { enUS } from 'date-fns/locale'
 import CommentInput from './CommentInput.tsx'
 import { Comment } from '@/domain/comment/types.ts'
 import { useComment } from '@/domain/comment/hooks/useComment.ts'
@@ -83,7 +83,7 @@ const CommentList: React.FC<CommentListProps> = ({ noteId }) => {
               <span className="comment-username text-sm text-gray-900">
                 {reply.author?.username}
               </span>
-              <span className="text-sm text-blue-500">回复</span>
+              <span className="text-sm text-blue-500">replied to</span>
               <span className="text-sm font-medium text-blue-500">
                 @{parentComment.author?.username}
               </span>
@@ -95,7 +95,7 @@ const CommentList: React.FC<CommentListProps> = ({ noteId }) => {
               <span className="comment-time">
                 {formatDistanceToNow(new Date(reply.createdAt), {
                   addSuffix: true,
-                  locale: zhCN,
+                  locale: enUS,
                 })}
               </span>
               <Button
@@ -119,7 +119,7 @@ const CommentList: React.FC<CommentListProps> = ({ noteId }) => {
                 onClick={() => handleReply(reply)}
                 className="comment-action-btn comment-reply-btn h-auto p-0 text-xs"
               >
-                回复
+                Reply
               </Button>
             </div>
           </div>
@@ -154,7 +154,7 @@ const CommentList: React.FC<CommentListProps> = ({ noteId }) => {
               <span className="comment-time text-xs text-gray-500">
                 {formatDistanceToNow(new Date(comment.createdAt), {
                   addSuffix: true,
-                  locale: zhCN,
+                  locale: enUS,
                 })}
               </span>
             </div>
@@ -182,7 +182,7 @@ const CommentList: React.FC<CommentListProps> = ({ noteId }) => {
                 onClick={() => handleReply(comment)}
                 className="comment-action-btn comment-reply-btn flex items-center gap-1"
               >
-                回复
+                Reply
               </Button>
               {hasReplies && (
                 <Button
@@ -191,8 +191,8 @@ const CommentList: React.FC<CommentListProps> = ({ noteId }) => {
                   className="text-blue-500 hover:text-blue-600"
                 >
                   {isRepliesVisible
-                    ? '收起回复'
-                    : `查看回复 (${flatReplies.length})`}
+                    ? 'Hide replies'
+                    : `View replies (${flatReplies.length})`}
                 </Button>
               )}
             </div>
@@ -217,7 +217,9 @@ const CommentList: React.FC<CommentListProps> = ({ noteId }) => {
     <div className="comment-list space-y-8">
       {/* 评论输入框 */}
       <div className="mb-4">
-        <h3 className="mb-2 text-lg font-medium text-gray-900">发表评论</h3>
+        <h3 className="mb-2 text-lg font-medium text-gray-900">
+          Post a Comment
+        </h3>
         <CommentInput
           noteId={noteId}
           parentId={replyTo?.commentId}
@@ -233,16 +235,16 @@ const CommentList: React.FC<CommentListProps> = ({ noteId }) => {
       {/* 评论列表 */}
       <div>
         <h3 className="mb-4 text-lg font-medium text-gray-900">
-          评论 ({comments?.length || 0})
+          Comments ({comments?.length || 0})
         </h3>
         {loading ? (
-          <div className="comment-loading">加载中...</div>
+          <div className="comment-loading">Loading...</div>
         ) : comments && comments.length > 0 ? (
           <div className="space-y-1">{comments.map(renderMainComment)}</div>
         ) : (
           <div className="comment-empty">
             <div className="mb-4 text-4xl">💬</div>
-            <div>暂无评论，快来发表第一条评论吧！</div>
+            <div>No comments yet. Be the first to post one.</div>
           </div>
         )}
       </div>
@@ -262,7 +264,7 @@ const CommentList: React.FC<CommentListProps> = ({ noteId }) => {
             })
           }}
           showSizeChanger={false}
-          showTotal={(total) => `共 ${total} 条评论`}
+          showTotal={(total) => `${total} comments`}
         />
       </div>
     </div>

@@ -2,7 +2,7 @@ package com.kama.notes.model.dto.comment;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * 更新评论请求

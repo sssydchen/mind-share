@@ -11,7 +11,7 @@ import { QuestionListItemVO } from '../../../../domain/questionList/types/types.
 
 const AdminQuestionListDetail: React.FC = () => {
   /**
-   * 题单 ID
+   * Study Lists ID
    */
   const { questionListId } = useParams()
 
@@ -20,13 +20,13 @@ const AdminQuestionListDetail: React.FC = () => {
    */
   const sortedColumns: ProColumns[] = [
     {
-      title: '排序',
+      title: 'Order',
       dataIndex: 'rank',
       width: '5%',
       className: 'drag-visible',
     },
     {
-      title: '标题',
+      title: 'Title',
       dataIndex: 'question',
       className: 'drag-visible',
       renderText: (_, record) => {
@@ -35,13 +35,13 @@ const AdminQuestionListDetail: React.FC = () => {
       width: '80%',
     },
     {
-      title: '操作',
+      title: 'Actions',
       dataIndex: 'operation',
       renderText: (_, record) => {
         return (
           <div className="flex gap-4">
             <Popconfirm
-              title="确定删除"
+              title="Delete this item?"
               onConfirm={async () => {
                 await deleteQuestionListItem(
                   Number(questionListId),
@@ -59,12 +59,12 @@ const AdminQuestionListDetail: React.FC = () => {
   ]
 
   /**
-   * 题单详细信息
+   * Study Lists详细信息
    */
   const { questionList } = useQuestionList2(Number(questionListId))
 
   /**
-   * 题单项列表
+   * Study Lists项列表
    */
   const {
     questionListItems,
@@ -74,16 +74,16 @@ const AdminQuestionListDetail: React.FC = () => {
   } = useQuestionListItem(Number(questionListId))
 
   /**
-   * 题单描述信息
+   * Study Lists描述信息
    */
   const items = [
     {
-      label: '题集描述',
+      label: 'Description',
       span: 3,
       children: questionList?.description,
     },
     {
-      label: '题集类型',
+      label: 'Type',
       span: 3,
       children: questionList?.type,
     },
@@ -101,7 +101,7 @@ const AdminQuestionListDetail: React.FC = () => {
     newDataSource: QuestionListItemVO[],
   ) => {
     await sortListItemVO(newDataSource)
-    message.success('排序成功')
+    message.success('Order updated')
   }
 
   return (
@@ -115,7 +115,7 @@ const AdminQuestionListDetail: React.FC = () => {
             toggleIsModalOpen()
           }}
         >
-          添加题目
+          Add Question
         </Button>
       </div>
       <DragSortTable

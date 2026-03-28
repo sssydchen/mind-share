@@ -33,37 +33,41 @@ const CreateCollectionModal: React.FC<CreateCollectionModalProps> = ({
 
   return (
     <Modal open={isModalOpen} onCancel={toggleIsModalOpen} footer={null}>
-      <div className="mb-4 text-center text-lg font-medium">创建新的收藏夹</div>
+      <div className="mb-4 text-center text-lg font-medium">
+        Create a New Collection
+      </div>
       <Form form={form} autoComplete={'off'} onFinish={onFinishHandle}>
         <Form.Item
           name={'name'}
           rules={[
-            { required: true, message: '请输入收藏夹名称' },
-            { min: 2, message: '最少两个字符' },
-            { max: 32, message: '最多 32 个字符' },
+            { required: true, message: 'Enter a collection name' },
+            { min: 2, message: 'Use at least 2 characters' },
+            { max: 32, message: 'Use 32 characters or fewer' },
             {
               pattern: new RegExp('^[\\u4e00-\\u9fa5a-zA-Z0-9_+\\-]+$'),
-              message: '只能包含中文、字母、数字、下划线、中划线',
+              message:
+                'Only letters, numbers, underscores, hyphens, and Chinese characters are allowed',
             },
           ]}
         >
-          <Input placeholder={'请输入收藏夹名称'} />
+          <Input placeholder={'Enter a collection name'} />
         </Form.Item>
         <Form.Item
           name={'description'}
           rules={[
-            { max: 128, message: '最多 128 个字符' },
+            { max: 128, message: 'Use 128 characters or fewer' },
             {
               pattern: new RegExp('^[\\u4e00-\\u9fa5a-zA-Z0-9_+\\-]+$'),
-              message: '只能包含中文、字母、数字、下划线、中划线',
+              message:
+                'Only letters, numbers, underscores, hyphens, and Chinese characters are allowed',
             },
           ]}
         >
-          <TextArea placeholder={'请输入收藏夹描述'} rows={4} />
+          <TextArea placeholder={'Enter a collection description'} rows={4} />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit" block loading={loading}>
-            创建
+            Create
           </Button>
         </Form.Item>
       </Form>

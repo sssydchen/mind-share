@@ -1,5 +1,5 @@
 /**
- * 注册请求参数和返回参数
+ * Sign Up请求参数和返回参数
  */
 export type RegisterBody = {
   username: string
@@ -14,7 +14,7 @@ export type RegisterData = {
 }
 
 /**
- * 登录时的请求参数和返回参数
+ * Login时的请求参数和返回参数
  */
 export type LoginBody = {
   account?: string
@@ -23,7 +23,7 @@ export type LoginBody = {
 }
 
 /**
- * 发送验证码的请求参数
+ * Send Code的请求参数
  */
 export type SendVerifyCodeBody = {
   email: string

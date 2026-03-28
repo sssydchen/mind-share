@@ -1,21 +1,21 @@
 /**
- * 首页路径
+ * Home路径
  */
 export const HOME = '/'
 export const HOME_PAGE = '/home'
 
 /**
- * 题库路径
+ * Question Bank路径
  */
 export const QUESTION_SET = '/question-set'
 
 /**
- * 题单路径
+ * Study Lists路径
  */
 export const QUESTION_LIST = '/question-list'
 
 /**
- * 个人主页
+ * Profile
  */
 export const USER_HOME = '/user'
 
@@ -33,6 +33,6 @@ export const USER_NOTE = '/user-center/note'
 export const QUESTION = '/questions'
 
 /**
- * 消息中心
+ * Messages
  */
 export const MESSAGE_CENTER = '/messages'

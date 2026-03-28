@@ -11,10 +11,10 @@ const NotFound: React.FC = () => {
     <Result
       status="404"
       title="404 Not Found"
-      subTitle="访问页面不存在"
+      subTitle="Page not found"
       extra={
         <Button type="primary" onClick={goBack}>
-          返回上一页
+          Go Back
         </Button>
       }
     />

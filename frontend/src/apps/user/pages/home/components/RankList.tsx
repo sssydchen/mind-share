@@ -7,7 +7,7 @@ const RankList: React.FC = () => {
   return (
     <Panel>
       <div className="text-sm font-semibold text-neutral-800">
-        今日笔记排行榜
+        Today's Note Ranking
       </div>
       <Divider />
       <NoteRankList />

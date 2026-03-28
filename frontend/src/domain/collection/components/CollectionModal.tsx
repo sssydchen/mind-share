@@ -49,8 +49,12 @@ const CollectionModal: React.FC<CollectionModalProps> = ({
           />
         }
       >
-        <div className="mb-4 text-center text-lg font-medium">选择收藏夹</div>
-        {collectionVOList.length === 0 && <Empty description={'暂无收藏夹'} />}
+        <div className="mb-4 text-center text-lg font-medium">
+          Choose a Collection
+        </div>
+        {collectionVOList.length === 0 && (
+          <Empty description={'No collections yet'} />
+        )}
         {collectionVOList.length > 0 && (
           <CollectionList
             collectionVOList={collectionVOList}

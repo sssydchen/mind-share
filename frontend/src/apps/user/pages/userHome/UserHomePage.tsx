@@ -14,12 +14,12 @@ const UserHomePage: React.FC = () => {
   const items = [
     {
       key: '1',
-      label: `笔记`,
+      label: `Notes`,
       children: <UserNoteList userId={userId} />,
     },
     {
       key: '2',
-      label: `收藏`,
+      label: `Collections`,
       children: <UserCollectList userId={userId} />,
     },
   ]

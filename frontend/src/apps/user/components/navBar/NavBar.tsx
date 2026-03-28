@@ -21,15 +21,15 @@ type MenuItem = Required<MenuProps>['items'][number]
 
 const items: MenuItem[] = [
   {
-    label: <NavLink to={HOME_PAGE}>首页</NavLink>,
+    label: <NavLink to={HOME_PAGE}>Home</NavLink>,
     key: 'home',
   },
   {
-    label: <NavLink to={QUESTION_SET}>题库</NavLink>,
+    label: <NavLink to={QUESTION_SET}>Question Bank</NavLink>,
     key: 'question-set',
   },
   {
-    label: <NavLink to={QUESTION_LIST}>题单</NavLink>,
+    label: <NavLink to={QUESTION_LIST}>Study Lists</NavLink>,
     key: 'question-list',
   },
 ]
@@ -63,7 +63,7 @@ const NavBar: React.FC = () => {
    * 定时获取未读消息数量
    */
   useEffect(() => {
-    // 如果用户未登录，不获取消息数量
+    // 如果用户未Login，不获取消息数量
     if (!app.isLogin) {
       setUnreadCount(0)
       return

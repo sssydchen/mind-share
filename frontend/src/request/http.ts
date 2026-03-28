@@ -52,27 +52,27 @@ http.interceptors.response.use(
       headers: response.headers,
     })
 
-    // 如果是登录接口，直接返回完整响应
+    // 如果是Login接口，直接返回完整响应
     if (response.config.url?.includes('/api/auth/login')) {
       return response
     }
 
     const res = response.data
     if (res.code !== 200) {
-      // 401: 未登录状态
+      // 401: 未Login状态
       if (res.code === 401) {
-        console.log('用户未登录或登录已过期')
+        console.log('用户Not signed in or session expired')
         localStorage.removeItem(TOKEN_KEY)
         localStorage.removeItem('currentUser')
-        // 如果当前不在登录页面，才跳转
+        // 如果当前不在Login页面，才跳转
         if (!window.location.pathname.includes('/login')) {
-          message.error('登录已过期，请重新登录')
+          message.error('Session expired. Please sign in again')
           window.location.href = '/login'
         }
-        return Promise.reject(new Error('未登录或登录已过期'))
+        return Promise.reject(new Error('Not signed in or session expired'))
       }
       // 其他业务错误码，显示错误信息
-      message.error(res.message || '请求失败')
+      message.error(res.message || 'Request failed')
       return Promise.reject(res)
     }
     // 返回响应数据
@@ -91,25 +91,30 @@ http.interceptors.response.use(
     if (error.response) {
       // 服务器返回了错误状态码
       if (error.response.status === 401) {
-        console.log('用户未登录或登录已过期')
+        console.log('用户Not signed in or session expired')
         localStorage.removeItem(TOKEN_KEY)
         localStorage.removeItem('currentUser')
-        // 如果当前不在登录页面，才跳转
+        // 如果当前不在Login页面，才跳转
         if (!window.location.pathname.includes('/login')) {
-          message.error('登录已过期，请重新登录')
+          message.error('Session expired. Please sign in again')
           window.location.href = '/login'
         }
       } else {
-        message.error(error.response.data?.message || '请求失败，请稍后重试')
+        message.error(
+          error.response.data?.message ||
+            'Request failed. Please try again later.',
+        )
       }
     } else if (error.request) {
       // 请求发出去了但没有收到响应
       console.error('网络错误:', error.request)
-      message.error('网络连接失败，请检查网络')
+      message.error(
+        'Network connection failed. Check your internet connection.',
+      )
     } else {
       // 请求配置出错
       console.error('请求配置错误:', error.message)
-      message.error('请求配置错误')
+      message.error('Request configuration error')
     }
     return Promise.reject(error)
   },

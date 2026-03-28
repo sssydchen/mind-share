@@ -23,14 +23,14 @@ const HostModal: React.FC = () => {
         Host
       </FloatButton>
       <Modal
-        title={'Host 配置'}
+        title={'Host Settings'}
         open={open}
         onCancel={() => setOpen(false)}
         footer={null}
       >
         <div className="pb-4">
           <div className="mb-4 text-sm">
-            配置网络请求的 Host 地址，默认为：项目启动地址
+            Configure the API host. Default: current project backend address.
           </div>
           <Input
             type="text"

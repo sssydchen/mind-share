@@ -89,7 +89,7 @@ export function useNotes(noteQueryParams: NoteQueryParams) {
     content: string,
   ): Promise<number | undefined> {
     if (!content.trim()) {
-      message.info('笔记内容为空')
+      message.info('Note content cannot be empty')
       return
     }
 

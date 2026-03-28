@@ -22,7 +22,7 @@ export function removeToken(): void {
 }
 
 /**
- * 检查是否已登录
+ * 检查是否已Login
  */
 export function isLoggedIn(): boolean {
   return !!getToken()

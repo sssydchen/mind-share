@@ -33,7 +33,9 @@ const HomePage: React.FC = () => {
     <div className="flex justify-center">
       <div className="w-[700px]">
         <Panel>
-          <div className="text-sm font-semibold text-neutral-800">近期笔记</div>
+          <div className="text-sm font-semibold text-neutral-800">
+            Recent Notes
+          </div>
           <Divider />
           <Skeleton loading={loading}>
             <NoteList

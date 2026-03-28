@@ -48,8 +48,8 @@ const CategoryOptDrawer: React.FC<CategoryOptDrawerProps> = ({
   } else if (mode === 'update' && category !== undefined) {
     modeEnum = ModeEnum.updateCategory
   } else {
-    console.log('mode 和 category 错误')
-    throw new Error('mode 和 category 错误')
+    console.log('Invalid mode/category combination')
+    throw new Error('Invalid mode/category combination')
   }
 
   function onFinish(values: any) {
@@ -58,20 +58,20 @@ const CategoryOptDrawer: React.FC<CategoryOptDrawerProps> = ({
         name: values.name,
         parentCategoryId: 0,
       })
-      message.success('创建分类成功')
+      message.success('Category created')
     } else if (modeEnum === ModeEnum.createSubCategory) {
       createCategory({
         name: values.name,
         parentCategoryId: category!.categoryId,
       })
-      message.success('创建分类成功')
+      message.success('Category created')
     } else if (modeEnum === ModeEnum.updateCategory) {
       if (category === undefined) return
       updateCategory({
         ...category,
         name: values.name,
       })
-      message.success('更新分类成功')
+      message.success('Category updated')
     } else {
       console.log('error')
       throw new Error('error')
@@ -106,7 +106,7 @@ const CategoryOptDrawer: React.FC<CategoryOptDrawerProps> = ({
     <div>
       <Drawer
         open={isDrawerOpen}
-        title={mode === 'create' ? '创建分类' : '编辑分类'}
+        title={mode === 'create' ? 'Create Category' : 'Edit Category'}
         onClose={toggleIsDrawerOpen}
         width={450}
       >
@@ -118,14 +118,14 @@ const CategoryOptDrawer: React.FC<CategoryOptDrawerProps> = ({
         >
           {modeEnum === ModeEnum.createSubCategory && (
             <Form.Item
-              label="父分类名"
+              label="Parent Category"
               name="parentCategoryName"
               rules={[
-                { required: true, message: '请输入分类名' },
+                { required: true, message: 'Enter a category name' },
                 {
                   min: 2,
                   max: 32,
-                  message: '分类名长度在 2 - 32 个字符',
+                  message: 'Category name must be between 2 and 32 characters',
                 },
               ]}
             >
@@ -133,19 +133,19 @@ const CategoryOptDrawer: React.FC<CategoryOptDrawerProps> = ({
             </Form.Item>
           )}
           {modeEnum === ModeEnum.updateCategory && (
-            <Form.Item label="分类 ID" name="categoryId">
+            <Form.Item label="Category ID" name="categoryId">
               <Input disabled></Input>
             </Form.Item>
           )}
           <Form.Item
-            label="分类名"
+            label="Category Name"
             name="name"
             rules={[
-              { required: true, message: '请输入分类名' },
+              { required: true, message: 'Enter a category name' },
               {
                 min: 2,
                 max: 32,
-                message: '分类名长度在 2 - 32 个字符',
+                message: 'Category name must be between 2 and 32 characters',
               },
             ]}
           >
@@ -153,7 +153,7 @@ const CategoryOptDrawer: React.FC<CategoryOptDrawerProps> = ({
           </Form.Item>
           <Form.Item>
             <Button type="primary" block htmlType="submit">
-              {mode === 'create' ? '创建' : '更新'}
+              {mode === 'create' ? 'Create' : 'Update'}
             </Button>
           </Form.Item>
         </Form>

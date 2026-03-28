@@ -280,9 +280,11 @@ const CalendarHeatmap: React.FC<CalendarHeatmapProps> = (props) => {
     function generateToolTipContent(date: Date, count: number = 0) {
       if (!date) return ''
       date = new Date(date)
-      const dateString = `${date.getMonth() + 1}月${date.getDate()}日`
-      const countString = count ? `提交 ${count} 次笔记` : '未提交笔记'
-      const rankString = `排名 ${value?.rank}`
+      const dateString = `${date.getMonth() + 1}/${date.getDate()}`
+      const countString = count
+        ? `${count} note submissions`
+        : 'No note submitted'
+      const rankString = `Rank ${value?.rank}`
       return `${dateString} ${countString} ${rankString}`
     }
 

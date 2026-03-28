@@ -27,9 +27,9 @@ const ExpandButton: React.FC<ExpandButtonProps> = ({
         }
       >
         {isCollapsed ? (
-          <span className={'text-gray-500'}>展开阅读全文</span>
+          <span className={'text-gray-500'}>Read More</span>
         ) : (
-          <span className={'text-gray-500'}>收起内容</span>
+          <span className={'text-gray-500'}>Show Less</span>
         )}
       </Button>
     </div>

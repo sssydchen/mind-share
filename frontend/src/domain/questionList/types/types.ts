@@ -2,8 +2,8 @@ import { QuestionDetail, QuestionSummary } from '../../question'
 import { UserQuestionStatus } from '../../question/types/service.ts'
 
 export enum QuestionListType {
-  COMMON_TYPE = 1, // 普通题单
-  TRAINING_CAMP_TYPE = 2, // 训练营专属题单
+  COMMON_TYPE = 1, // 普通Study Lists
+  TRAINING_CAMP_TYPE = 2, // 训练营专属Study Lists
 }
 
 export enum QuestionListParentNode {
@@ -12,7 +12,7 @@ export enum QuestionListParentNode {
 }
 
 /**
- * 题单实体
+ * Study Lists实体
  */
 export interface QuestionListEntity {
   questionListId: number
@@ -24,7 +24,7 @@ export interface QuestionListEntity {
 }
 
 /**
- * 题单项实体
+ * Study Lists项实体
  */
 export interface QuestionListItemEntity {
   questionListId: number
@@ -35,7 +35,7 @@ export interface QuestionListItemEntity {
 }
 
 /**
- * 题单分类实体
+ * Study Lists分类实体
  */
 export interface QuestionListCategory {
   key: number
@@ -45,7 +45,7 @@ export interface QuestionListCategory {
 }
 
 /**
- * 题单项详情 VO
+ * Study Lists项详情 VO
  */
 export interface QuestionListItemVO {
   questionListId: number
@@ -61,7 +61,7 @@ export interface QuestionListItemUserVO {
 }
 
 /**
- * 创建题单body实体
+ * 创建Study Listsbody实体
  */
 export interface CreateOrUpDateQuestionListBody {
   name: string
@@ -70,7 +70,7 @@ export interface CreateOrUpDateQuestionListBody {
 }
 
 /**
- * 题单排序服务 body 实体
+ * Study Lists排序服务 body 实体
  */
 export interface SortQuestionListItemBody {
   questionListId: number
@@ -78,7 +78,7 @@ export interface SortQuestionListItemBody {
 }
 
 /**
- * 题单项查询参数
+ * Study Lists项查询参数
  */
 export interface QuestionListItemQueryParams {
   questionListId: number | undefined

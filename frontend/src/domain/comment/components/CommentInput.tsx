@@ -29,7 +29,7 @@ export const CommentInput: React.FC<CommentInputProps> = ({
 
   const handleSubmit = async () => {
     if (!content.trim()) {
-      message.warning('请填写评论内容')
+      message.warning('Enter a comment before posting')
       return
     }
     setLoading(true)
@@ -37,7 +37,7 @@ export const CommentInput: React.FC<CommentInputProps> = ({
       await onComment(noteId, parentId || 0, content)
       setContent('')
     } catch {
-      message.error('评论发布失败，请重试')
+      message.error('Failed to post comment. Try again.')
     } finally {
       setLoading(false)
     }
@@ -54,7 +54,7 @@ export const CommentInput: React.FC<CommentInputProps> = ({
       <div className="rounded-lg border-2 border-dashed border-gray-200 bg-gray-50 p-4">
         <div className="text-center text-gray-500">
           <div className="mb-2 text-lg">💬</div>
-          <div>请先登录后再发表评论</div>
+          <div>Please sign in before posting a comment</div>
         </div>
       </div>
     )
@@ -66,7 +66,7 @@ export const CommentInput: React.FC<CommentInputProps> = ({
       {replyTo && (
         <div className="flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 p-3">
           <div className="flex items-center gap-2 text-sm text-blue-700">
-            <span>回复</span>
+            <span>Replying to</span>
             <Avatar size="small" src={replyTo.author?.avatarUrl} />
             <span className="font-medium">@{replyTo.author?.username}</span>
           </div>
@@ -76,7 +76,7 @@ export const CommentInput: React.FC<CommentInputProps> = ({
             onClick={onCancel}
             className="ml-auto text-blue-600 hover:text-blue-800"
           >
-            取消
+            Cancel
           </Button>
         </div>
       )}
@@ -91,8 +91,8 @@ export const CommentInput: React.FC<CommentInputProps> = ({
             onKeyPress={handleKeyPress}
             placeholder={
               replyTo
-                ? `回复 @${replyTo.author?.username}...`
-                : '写下你的评论...'
+                ? `Reply to @${replyTo.author?.username}...`
+                : 'Write a comment...'
             }
             autoSize={{ minRows: 2, maxRows: 6 }}
             maxLength={500}
@@ -101,12 +101,14 @@ export const CommentInput: React.FC<CommentInputProps> = ({
           />
           <div className="flex items-center justify-between">
             <div className="text-xs text-gray-500">
-              {replyTo ? 'Ctrl+Enter 发送回复' : 'Ctrl+Enter 发送评论'}
+              {replyTo
+                ? 'Ctrl+Enter to send reply'
+                : 'Ctrl+Enter to post comment'}
             </div>
             <div className="flex gap-2">
               {replyTo && (
                 <Button onClick={onCancel} disabled={loading}>
-                  取消
+                  Cancel
                 </Button>
               )}
               <Button
@@ -115,7 +117,7 @@ export const CommentInput: React.FC<CommentInputProps> = ({
                 loading={loading}
                 icon={<SendOutlined />}
               >
-                {replyTo ? '回复' : '发表评论'}
+                {replyTo ? 'Reply' : 'Post Comment'}
               </Button>
             </div>
           </div>

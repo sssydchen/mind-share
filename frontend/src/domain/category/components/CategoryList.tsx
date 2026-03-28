@@ -42,39 +42,39 @@ const CategoryList: React.FC = () => {
    */
   const columns: TableColumnsType<CategoryTree> = [
     {
-      title: '分类 ID',
+      title: 'Category ID',
       dataIndex: 'categoryId',
       width: '5%',
       key: 'categoryId',
     },
     {
-      title: '分类名',
+      title: 'Category Name',
       dataIndex: 'name',
       width: '10%',
       key: 'name',
     },
     {
-      title: '分类类型',
+      title: 'Category Type',
       dataIndex: 'parentCategoryId',
       width: '15%',
       key: 'parentCategoryId',
       render: (_, category) => (
         <>
           {isParentCategory(category) ? (
-            <Tag color="red">父分类</Tag>
+            <Tag color="red">Parent</Tag>
           ) : (
-            <Tag color="green">子分类</Tag>
+            <Tag color="green">Child</Tag>
           )}
         </>
       ),
     },
     {
-      title: '操作',
+      title: 'Actions',
       width: '10%',
       render: (_, category) => {
         return (
           <div className="flex gap-3">
-            <Tooltip title={'编辑'}>
+            <Tooltip title={'Edit'}>
               <EditTwo
                 theme="multi-color"
                 size="18"
@@ -88,12 +88,12 @@ const CategoryList: React.FC = () => {
               />
             </Tooltip>
             <Popconfirm
-              title={'确认删除？'}
+              title={'Delete this category?'}
               onConfirm={async () => {
                 await deleteCategory(category)
               }}
             >
-              <Tooltip title={'删除'}>
+              <Tooltip title={'Delete'}>
                 <DeleteOne
                   theme="multi-color"
                   size="18"
@@ -104,7 +104,7 @@ const CategoryList: React.FC = () => {
             </Popconfirm>
             {/* 只有一级分类（父分类）才能添加子分类 */}
             {isParentCategory(category) && (
-              <Tooltip title={'添加子分类'}>
+              <Tooltip title={'Add Child Category'}>
                 <AddSubset
                   theme="multi-color"
                   size="18"
@@ -136,7 +136,7 @@ const CategoryList: React.FC = () => {
             setSelectedCategory(undefined)
           }}
         >
-          创建分类
+          Create Category
         </Button>
       </div>
       <Table

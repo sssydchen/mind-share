@@ -6,7 +6,7 @@ import { message } from 'antd'
 
 export function useQuestionListItem(questionListId: number) {
   /**
-   * 题单项列表
+   * Study Lists项列表
    */
   const [questionListItems, setQuestionListItems] = useState<
     QuestionListItemVO[]
@@ -30,8 +30,8 @@ export function useQuestionListItem(questionListId: number) {
   }, [questionListId])
 
   /**
-   * 添加题单项
-   * @param questionListId 题单 ID
+   * 添加Study Lists项
+   * @param questionListId Study Lists ID
    * @param question QuestionSummary
    */
   async function createQuestionListItem(
@@ -46,7 +46,7 @@ export function useQuestionListItem(questionListId: number) {
         (item) => item.question.questionId === question.questionId,
       )
     ) {
-      message.warning('题目已存在')
+      message.warning('Question already exists')
       return
     }
     const { data } =
@@ -62,11 +62,11 @@ export function useQuestionListItem(questionListId: number) {
       }
       return [...prev, item]
     })
-    message.success('添加成功')
+    message.success('Question added')
   }
 
   /**
-   * 删除题单项
+   * 删除Study Lists项
    */
   async function deleteQuestionListItem(
     questionListId: number,
@@ -81,7 +81,7 @@ export function useQuestionListItem(questionListId: number) {
         (item) => item.question.questionId !== questionId,
       ),
     )
-    message.success('删除成功')
+    message.success('Deleted')
   }
 
   /**
@@ -89,7 +89,7 @@ export function useQuestionListItem(questionListId: number) {
    */
   async function sortListItemVO(listItemVO: QuestionListItemVO[]) {
     if (listItemVO.length === 0) {
-      message.warning('listItem 长度为 0')
+      message.warning('No items to sort')
       return
     }
 

@@ -10,7 +10,7 @@ export interface User {
 }
 
 /**
- * 用户登录请求参数
+ * 用户Login请求参数
  */
 export interface LoginParams {
   username: string
@@ -18,7 +18,7 @@ export interface LoginParams {
 }
 
 /**
- * 用户注册请求参数
+ * 用户Sign Up请求参数
  */
 export interface RegisterParams {
   username: string

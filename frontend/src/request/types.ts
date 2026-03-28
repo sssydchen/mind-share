@@ -75,5 +75,5 @@ export type Response<T> = {
   msg: string
   data: T
   pagination?: Pagination // 分页查询时需要
-  token?: string // 登录 / 认证时会返回 token
+  token?: string // Login / 认证时会返回 token
 }
